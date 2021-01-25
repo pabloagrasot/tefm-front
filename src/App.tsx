@@ -1,13 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {Menu} from './menu/Menu'
+
 
 function App() {
   return (
     
     <div className="App">
-      <Menu />
+      
       <div className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
