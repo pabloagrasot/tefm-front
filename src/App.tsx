@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Link, Route, Router, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css';
 import { Ejercicios } from './ejercicio/Ejercicios';
+import { Acceso } from './acceso/Acceso';
 import { Menu } from './menu/Menu';
 
 
@@ -14,12 +15,9 @@ function App() {
         <Switch>
           <Route exact path='/'/>
           <Route path='/ejercicios' component={Ejercicios}/>
+          <Route path='/acceso' component={Acceso}/>
         </Switch>
       </BrowserRouter>
-
-
-
-      <h1>Home</h1>
     </div>
   );
 }

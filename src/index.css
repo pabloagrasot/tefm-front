@@ -17,3 +17,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.primary-button{
+  background-color: #1a83ff;
+  color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  width: 50%;
+  margin: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .primary-button{
+      width: 80%;
+  }
+}
