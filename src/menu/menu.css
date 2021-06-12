@@ -4,6 +4,9 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  border-bottom: 0.5rem solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right,rgba(26,131,255,1) 9%, rgba(51,87,128,1) 32%, rgba(31,52,77,1) 78%);
 }
 
 .menu-hamburger, .menu-close {
@@ -20,9 +23,13 @@
   display: flex;
   justify-content: center;
   position: fixed;
+  border-right: 0.5rem solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to bottom,rgba(51,51,51,1) 10.8%, rgba(26,131,255,1) 7%, rgba(51,87,128,1) 32%, rgba(31,52,77,1) 78%);
   top: 0;
   left: -100%;
   transition: 850ms;
+  
 }
 
 .nav-menu.active {
@@ -32,6 +39,7 @@
 @media screen and (max-width: 600px) {
   .nav-menu.active {
    width: 100%;
+   border:none
   }
 }
 .nav-link {

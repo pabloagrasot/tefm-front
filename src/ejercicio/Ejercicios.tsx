@@ -40,7 +40,7 @@ export const Ejercicios: FC = () => {
     } else {
       setExercise(bici)
       setGif(biciPng)
-      lazy
+      
     }
   }
 
