@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, ChangeEvent, lazy } from 'react'
+import { FC, useEffect, useState, ChangeEvent, lazy, Suspense} from 'react'
 import bici from '../img/bici.gif'
 import correr from '../img/correr.gif'
 import biciPng from '../img/bici.png'
@@ -6,6 +6,8 @@ import correrPng from '../img/correr.png'
 import deporte from '../img/deporte.png'
 import noDeporte from '../img/no-deporte.png'
 import './ejercicios.css';
+
+
 
 
 export const Ejercicios: FC = () => {
@@ -24,6 +26,7 @@ export const Ejercicios: FC = () => {
   const [pointer, setPointer] = useState(true)
   const [gif, setGif] = useState(deporte)
   const [exercise , setExercise] = useState ('')
+  //const [EndExercise , setEndExercise] = useState<React.LazyExoticComponent<FC>>()
 
 
   const selectSeconds = (e: ChangeEvent<any>) => {
@@ -40,7 +43,6 @@ export const Ejercicios: FC = () => {
     } else {
       setExercise(bici)
       setGif(biciPng)
-      
     }
   }
 
@@ -56,11 +58,15 @@ export const Ejercicios: FC = () => {
     }else if (seconds === 0){
       clearInterval(interval)
       setGif(noDeporte)
-
       
     }
     return () => clearInterval(interval)
   }, [timerOn, percentage, seconds, watch, exercise])
+
+  
+  const End = lazy (
+  () => import ('../ejercicio-terminado/ejercicio-terminado')
+ )
 
   return (
     <>
@@ -146,6 +152,9 @@ export const Ejercicios: FC = () => {
           <img src={gif} alt="" className="exercise-gif" />
         </div>
       </section>
+      <Suspense fallback={null}>
+      {(seconds === 0) && <End />}
+      </Suspense>
     </>
   );
 }

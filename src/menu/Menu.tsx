@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 import {Link} from 'react-router-dom'
 import './menu.css';
 import Logo from '../img/logo.png';
+import Name from '../img/name.png'
 import * as FaIcons from "react-icons/fa";
 import { menuLinks } from './menu-links';
 
@@ -16,6 +17,10 @@ export const Menu: FC = () => {
       <Link to='#' className='menu-hamburger'>
       <FaIcons.FaBars onClick={showMenu}/>
       </Link>
+
+      <img src={Name} alt="app training tea" className="navbar-log"/>
+      <FaIcons.FaUserAlt className='menu-profile'/>
+      
       </div>
 
         <nav className={menu ? 'nav-menu active' : 'nav-menu'}>

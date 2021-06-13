@@ -15,7 +15,7 @@ export const Acceso : FC = () => {
       <div className="form__intro">
         <img src={Logo} className='menu-logo' alt='logo' />
         <p>Accede a tu cuenta para llevar el control de tus sesiones de educación física y poder llevar un seguimieto de la evolución de tus alumnos.</p>
-        <button onClick={showModal} className="signin-button">Regístrate</button>
+        <button onClick={showModal} className="secundary-button">Regístrate</button>
       </div>
     
       <Formik
