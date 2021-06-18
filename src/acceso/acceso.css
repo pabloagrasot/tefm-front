@@ -42,8 +42,12 @@
 }
 
 .input__error{
-    color: #1a83ff;
+    color: #8b0000 ;
     margin: 0.5rem;
+}
+
+.form-success{
+    color:#1a83ff;
 }
 
 
