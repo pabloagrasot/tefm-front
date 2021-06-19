@@ -41,7 +41,7 @@
     outline: none;
 }
 
-.input__error{
+.input__error, .form-error{
     color: #8b0000 ;
     margin: 0.5rem;
 }

@@ -1,40 +1,15 @@
 import { FC, useState} from 'react'
-import { Formik, useFormik, } from 'formik';
+import { useFormik } from 'formik';
 import './registro.css';
 import * as FaIcons from "react-icons/fa";
-import * as yup from 'yup'
 import axios from 'axios';
-interface props{
-  className:string
-  changeClass: () => void
-}
+import {Values} from './domain-cosas-js/values'
+import {Props} from './domain-cosas-js/props'
+import { validationSchema } from './domain-cosas-js/validationSchema';
 
-interface Values {
-  name: string;
-  lastName: string;
-  email: string;
-  userName:string;
-  password: string;
-  confirmPassword:string;
-}
-
-
-const validationSchema = yup.object().shape({
-  name: yup.string().required('Campo requerido'),
-  lastName: yup.string().required('Campo requerido'),
-  email: yup.string().email('Introduce un email correcto').required('Campo requerido'),
-  userName:yup.string().required('Campo requerido'),
-  password: yup.string().required('Campo requerido')
-  .oneOf([yup.ref('confirmPassword')], 'Las contraseñas no son inguales'),
-  confirmPassword:yup.string().required('Campo requerido')
-  .oneOf([yup.ref('password')], 'Las contraseñas no son inguales')
-})
-const sleep = (ms:number) => new Promise((r) => setTimeout(r, ms));
-
-
-
-export const Registro: FC<props> = ({className, changeClass}) => {
+export const Registro: FC<Props> = ({className, changeClass}) => {
   const [success, setSuccess] = useState(null)
+  const [error, setError] = useState(null)
 
   const onSubmit = async (values:Values) => {
 
@@ -42,11 +17,14 @@ export const Registro: FC<props> = ({className, changeClass}) => {
 
           const response = await axios.post('http://localhost:3500/signup', data).catch((err) => {
             if (err && err.response)
-            console.log('Error: ', err);
+            setError(err.response.data.message)
+            setSuccess(null)
           })
 
           if(response && response.data){
+            setError(null)
             setSuccess(response.data.message)
+            formik.resetForm()
           }
 
   }
@@ -71,7 +49,8 @@ export const Registro: FC<props> = ({className, changeClass}) => {
             </div>
 
             <div>
-              <p className='form-success'> {success ? success: 'Usuario registrado'} </p>
+              {error==null && <p className='form-success'> {success ? success: ''} </p>}
+              {success==null && <p className='form-error'> {error ? error: ''} </p>}
             </div>
 
             <div className='form-input'>

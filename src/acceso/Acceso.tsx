@@ -1,14 +1,49 @@
 import { FC, useState,} from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useFormik } from 'formik';
 import './acceso.css';
 import Logo from '../img/logo-blanco.png';
 import { Registro } from '../registro/Registro'
+import * as yup from 'yup'
+import axios from 'axios';
+import {Values} from './domain-cosas-js/values'
+
+const validationSchema = yup.object().shape({
+  
+  userName:yup.string().required('Introduce tu nombre de usuario'),
+  password: yup.string().required('Introduce tu contraseña')
+})
+
 
 export const Acceso : FC = () => {
 
   const [modal, setModal] = useState(false)
+  const [error, setError] = useState(null)
   const showModal = () => setModal(!modal);
   
+  
+  const onSubmit = async (values:Values) => {
+
+    const {password, ...data} = values
+
+          const response = await axios.post('http://localhost:3500/signin', data).catch((err) => {
+            if (err && err.response)
+            setError(err.response.data.message)
+          })
+
+          if(response && response.data){
+            formik.resetForm()
+            alert(`Has accedido ${data.userName}`)
+          }
+
+  }
+
+
+  const formik = useFormik({initialValues: { name: '', lastName: '', email: '', userName: '', password: '', confirmPassword: '' }, 
+  validateOnBlur:true,
+  onSubmit,
+  validationSchema: validationSchema
+})
+
   return (
     <>
     <section className="form__section">
@@ -17,47 +52,25 @@ export const Acceso : FC = () => {
         <p>Accede a tu cuenta para llevar el control de tus sesiones de educación física y poder llevar un seguimieto de la evolución de tus alumnos.</p>
         <button onClick={showModal} className="secundary-button">Regístrate</button>
       </div>
-    
-      <Formik
-       initialValues={{ email: '', password: '' }}
-       validate={values => {
-         const errors = {email: ''};
-         if (!values.email) {
-           errors.email = 'Requerido';
-         } else if (
-           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-         ) {
-           errors.email = 'Dirección de correo incorecta';
-         }
-         return errors;
-       }}
-       onSubmit={(values, { setSubmitting }) => {
-         setTimeout(() => {
-           alert(JSON.stringify(values, null, 2));
-           setSubmitting(false);
-         }, 400);
-       }}
-     >
-       {({ isSubmitting }) => (
-         <Form className="form">
+      
+         <form className="form" onSubmit={formik.handleSubmit}>
             <div>
               <h1>Iniciar sesión</h1>
             </div>
 
             <div className='form-input'>
-              <Field placeholder='Correo electrónico' className='input' type='email' name='email' />
-              <ErrorMessage className='input__error' name='email' component='div' />
+              <input id='userName' placeholder='Nombre de Usuario' className='input' type='text' name='userName' value={formik.values.userName} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+              <div className='input__error'>{formik.touched.userName && formik.errors.userName ? formik.errors.userName: ''}</div>
             </div>
 
             <div className='form-input'>
-              <Field placeholder='Contraseña' className='input'type='password' name='password' />
-              <ErrorMessage className='input__error' name="password" component="div" />
+              <input id='password' placeholder='Contraseña' className='input' type='password' name='password' value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+              <div className='input__error'>{formik.touched.password && formik.errors.password ? formik.errors.password: ''}</div>
            </div>
 
-           <button className="primary-button" type="submit" disabled={isSubmitting}>Accede</button>
-         </Form>
-       )}
-     </Formik >
+           <button className="primary-button" type="submit">Accede</button>
+           <p className='form-error'> {error ? error: ''} </p>
+         </form>
      
     </section>
     <Registro changeClass={showModal} className={modal ? 'modal active' : 'modal'}></Registro>
