@@ -1,0 +1,11 @@
+.add-student-icon{
+    color: #1a83ff;
+    font-size: 2rem;
+    cursor: pointer
+}
+
+.add-student-icon:hover{
+    color: #f5f5f5;
+    font-size: 2rem;
+    cursor: pointer
+}

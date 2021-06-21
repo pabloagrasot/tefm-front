@@ -3,16 +3,9 @@ import { useFormik } from 'formik';
 import './acceso.css';
 import Logo from '../img/logo-blanco.png';
 import { Registro } from '../registro/Registro'
-import * as yup from 'yup'
+import { validationSchema } from '../acceso/domain-cosas-js/validationSchema';
 import axios from 'axios';
 import {Values} from './domain-cosas-js/values'
-
-const validationSchema = yup.object().shape({
-  
-  userName:yup.string().required('Introduce tu nombre de usuario'),
-  password: yup.string().required('Introduce tu contraseña')
-})
-
 
 export const Acceso : FC = () => {
 
@@ -23,22 +16,27 @@ export const Acceso : FC = () => {
   
   const onSubmit = async (values:Values) => {
 
-    const {password, ...data} = values
+    const {...data} = values
 
           const response = await axios.post('http://localhost:3500/signin', data).catch((err) => {
             if (err && err.response)
             setError(err.response.data.message)
+            console.log(data)
+            console.log(err.response.data.message)
           })
 
           if(response && response.data){
             formik.resetForm()
+            console.log(response.data)
             alert(`Has accedido ${data.userName}`)
+            //window.location.href ='/alumnos/';
+            localStorage.setItem('token', response.data.token)
           }
 
   }
 
 
-  const formik = useFormik({initialValues: { name: '', lastName: '', email: '', userName: '', password: '', confirmPassword: '' }, 
+  const formik = useFormik({initialValues: {userName: '', password: ''}, 
   validateOnBlur:true,
   onSubmit,
   validationSchema: validationSchema
@@ -67,6 +65,7 @@ export const Acceso : FC = () => {
               <input id='password' placeholder='Contraseña' className='input' type='password' name='password' value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.password && formik.errors.password ? formik.errors.password: ''}</div>
            </div>
+
 
            <button className="primary-button" type="submit">Accede</button>
            <p className='form-error'> {error ? error: ''} </p>

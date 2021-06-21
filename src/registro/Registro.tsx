@@ -1,6 +1,5 @@
 import { FC, useState} from 'react'
 import { useFormik } from 'formik';
-import './registro.css';
 import * as FaIcons from "react-icons/fa";
 import axios from 'axios';
 import {Values} from './domain-cosas-js/values'
