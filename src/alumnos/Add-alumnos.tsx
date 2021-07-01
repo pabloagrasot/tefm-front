@@ -2,9 +2,9 @@ import { FC, useState} from 'react'
 import { useFormik } from 'formik';
 import * as FaIcons from "react-icons/fa";
 import axios from 'axios';
-import {Values} from './domain-cosas-js/values'
-import {Props} from './domain-cosas-js/props'
-import { validationSchema } from './domain-cosas-js/validationSchema';
+import {Values} from './domain/values'
+import {Props} from './domain/props'
+import { validationSchema } from './domain/validationSchema';
 
 const token = localStorage.getItem('token')
 const options = {

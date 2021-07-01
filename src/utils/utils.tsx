@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+
 export const token = localStorage.getItem('token')
 
 export const optionsHeaders = {
@@ -8,7 +9,7 @@ export const optionsHeaders = {
 
 export const getUserName = axios.get('http://localhost:3500/user', optionsHeaders)
     .then( response => {
-        let user = response.data.user.userName
+        const user = response.data.user.userName
     })
     .catch((err) => {
         if (err && err.response)

@@ -31,7 +31,7 @@ export const Menu: FC = () => {
               </Link>
             </li>
             
-
+        
             {menuLinks.map((link, index) => {
               return (
                 <li key={index} className={link.className}>

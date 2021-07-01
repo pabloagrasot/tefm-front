@@ -3,9 +3,9 @@ import { useFormik } from 'formik';
 import './acceso.css';
 import Logo from '../img/logo-blanco.png';
 import { Registro } from '../registro/Registro'
-import { validationSchema } from '../acceso/domain-cosas-js/validationSchema';
+import { validationSchema } from './domain/validationSchema';
 import axios from 'axios';
-import {Values} from './domain-cosas-js/values'
+import {Values} from './domain/values'
 
 export const Acceso : FC = () => {
 
