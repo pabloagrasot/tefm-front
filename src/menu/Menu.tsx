@@ -15,12 +15,17 @@ export const Menu: FC = () => {
     <header className='header'>
       <div className='navbar'>
       <Link to='#' className='menu-hamburger'>
-      <FaIcons.FaBars onClick={showMenu}/>
+        <FaIcons.FaBars onClick={showMenu}/>
       </Link>
 
-      <img src={Name} alt="app training tea" className="navbar-log"/>
-      <FaIcons.FaUserAlt className='menu-profile'/>
-      
+      <Link to ='/'>
+        <img src={Name} alt="app training tea" className="navbar-log"/>
+      </Link>
+
+      <Link to='/alumnos/'>
+        <FaIcons.FaUserAlt className='menu-profile'/>
+      </Link>
+
       </div>
 
         <nav className={menu ? 'nav-menu active' : 'nav-menu'}>

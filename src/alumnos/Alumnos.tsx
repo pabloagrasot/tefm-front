@@ -1,5 +1,6 @@
 import { FC, useEffect, useState} from 'react'
 import {AddAlumnos} from './Add-alumnos'
+import { Alumno } from '../alumno-results/Alumno';
 import { optionsHeaders } from '../utils/utils'
 import axios, { AxiosResponse } from 'axios'
 import './alumnos.css';
@@ -9,12 +10,18 @@ import {IStudent} from './domain/interfaces'
 
 
 
+
 export const Alumnos: FC = () => {
 
   const [modal, setModal] = useState(false)
   const showModal = () => setModal(!modal);
+
+  const [modalAlumno, setModalAlumno] = useState(false)
+  const showAlumno = () => setModalAlumno(!modalAlumno);
+
   const [students, setStudents] = useState<IStudent[]>([])
 
+  const [alumno, setAlumno] = useState('')
 
   useEffect(() => {
 
@@ -23,7 +30,15 @@ export const Alumnos: FC = () => {
         setStudents(response.data.data)
       })
 
+
+
   }, [])
+
+  function getAlumno(alumnoName:string){
+    showAlumno()
+    setAlumno(alumnoName)
+    console.log(alumno)
+  }
 
   return (
     <>
@@ -36,7 +51,7 @@ export const Alumnos: FC = () => {
       <section className='students_section'>
       {students.map((student:IStudent, index) => {
               return (
-                <div className='students_section-student' key={index}>
+                <div id={student.alumnoName} onClick={() => getAlumno(student.alumnoName)} className='students_section-student' key={index}>
                     <img src={imgApi + student.imagePath} alt="" />
                     <span>{student.alumnoName}</span>
                 </div>
@@ -44,9 +59,10 @@ export const Alumnos: FC = () => {
             })}
       </section>
 
-
+      <Alumno changeClass={showAlumno} alumnoName={alumno} className={modalAlumno ? 'modal active' : 'modal'}></Alumno>
 
 
     </>
   );
 }
+

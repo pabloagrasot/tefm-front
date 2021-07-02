@@ -2,8 +2,8 @@ import { FC, useState} from 'react'
 import { useFormik } from 'formik';
 import * as FaIcons from "react-icons/fa";
 import axios from 'axios';
-import {Values} from './domain/values'
-import {Props} from './domain/props'
+import {IValues} from './domain/values'
+import {Props} from '../utils/props'
 import { validationSchema } from './domain/validationSchema';
 
 const token = localStorage.getItem('token')
@@ -25,7 +25,7 @@ export const AddAlumnos: FC<Props> = ({className, changeClass}) => {
   const [success, setSuccess] = useState(null)
   const [error, setError] = useState(null)
 
-  const onSubmit = async (values:Values) => {
+  const onSubmit = async (values:IValues) => {
     
 
     const { ...data} = values
