@@ -1,5 +1,5 @@
 export interface Props{
     className:string
     changeClass: () => void
-    alumnoName:String
+    alumnoName:string
   }

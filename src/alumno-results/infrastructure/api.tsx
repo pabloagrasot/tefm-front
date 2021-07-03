@@ -1,6 +1,6 @@
 
 import {getUserName} from '../../utils/utils'
-import { Alumnos } from '../../alumnos/Alumnos'
+
 
 const user = getUserName.then
 

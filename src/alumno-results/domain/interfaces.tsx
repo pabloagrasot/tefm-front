@@ -1,3 +1,5 @@
+import { string } from "yup/lib/locale"
+
 export interface IStudent {
     alumnoName: string,
     createdAt: string,

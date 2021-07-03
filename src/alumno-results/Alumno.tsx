@@ -5,31 +5,69 @@ import {IStudent} from './domain/interfaces'
 import { optionsHeaders } from '../utils/utils'
 import { alumnoApi, imgApi } from './infrastructure/api';
 import axios, { AxiosResponse } from 'axios'
+import './alumno.css';
+
+
 
 export function Alumno(props:Props){
 
+const [getAlumno, setGetAlumno] = useState('')
 const [student, setStudent] = useState<IStudent>()
+const [apiGetAlumno, SetApiGetAlumno ] = useState('')
+const [success, setSuccess] = useState(null)
+const [error, setError] = useState(null)
 
-const alumno = props.alumnoName
 
 
-useEffect(() => {
-console.log(alumno)
-  axios.get<IStudent[]>(alumnoApi+alumno, optionsHeaders)
-  .then((response:AxiosResponse) => {
+  useEffect(() => {
+    SetApiGetAlumno(alumnoApi + getAlumno)
+    setGetAlumno(props.alumnoName)
+    const response = axios.get<IStudent>(apiGetAlumno, optionsHeaders)
+    .then((response:AxiosResponse) => {
     setStudent(response.data.data)
-    
+    })
+
+}, [getAlumno, apiGetAlumno])
+
+const deleteStudent = async () =>{
+
+
+  const response = await axios.delete<IStudent>(apiGetAlumno, optionsHeaders)
+  .then((response:AxiosResponse) => {
+    setError(null)
+    setSuccess(response.data.message)
+  })
+  .catch((err) => {
+    if (err && err.response)
+    setError(err.response.data.message)
+    setSuccess(null)
   })
 
-}, [])
+
+}
+
 
   return (
     <section className={props.className}>
-    <div className='modal__form'>
+    <div className='modal__form modal__alumno'>
       <div className='close' onClick={props.changeClass}>
         <FaIcons.FaTimes />
-        <h2>{alumno}</h2>
-      </div>        
+      </div>
+
+      <div className='student-img__circle'>
+        <img src={imgApi + student?.imagePath} alt="" />
+      </div>
+
+      <div>
+          {error==null && <p className='form-success'> {success ? success: ''} </p>}
+          {success==null && <p className='form-error'> {error ? error: ''} </p>}
+      </div>
+
+      <h2>{student?.alumnoName}</h2>
+
+
+      <button className='secundary-button' onClick={() => deleteStudent()}>Borrar Alumno</button>
+
     </div>
     </section> 
   )

@@ -9,8 +9,6 @@ import { alumnosApi, imgApi } from './infrastructure/api';
 import {IStudent} from './domain/interfaces'
 
 
-
-
 export const Alumnos: FC = () => {
 
   const [modal, setModal] = useState(false)
@@ -23,21 +21,18 @@ export const Alumnos: FC = () => {
 
   const [alumno, setAlumno] = useState('')
 
-  useEffect(() => {
 
-      axios.get<IStudent[]>(alumnosApi, optionsHeaders)
+  useEffect(() => {
+    axios.get<IStudent[]>(alumnosApi, optionsHeaders)
       .then((response:AxiosResponse) => {
         setStudents(response.data.data)
       })
-
-
-
+      
   }, [])
 
   function getAlumno(alumnoName:string){
     showAlumno()
     setAlumno(alumnoName)
-    console.log(alumno)
   }
 
   return (
@@ -59,7 +54,7 @@ export const Alumnos: FC = () => {
             })}
       </section>
 
-      <Alumno changeClass={showAlumno} alumnoName={alumno} className={modalAlumno ? 'modal active' : 'modal'}></Alumno>
+     { (modalAlumno===true) && <Alumno changeClass={showAlumno} alumnoName={alumno} className={modalAlumno ? 'modal active' : 'modal'}></Alumno> }
 
 
     </>
