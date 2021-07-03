@@ -30,8 +30,6 @@ const [error, setError] = useState(null)
 }, [getAlumno, apiGetAlumno])
 
 const deleteStudent = async () =>{
-
-
   const response = await axios.delete<IStudent>(apiGetAlumno, optionsHeaders)
   .then((response:AxiosResponse) => {
     setError(null)
@@ -42,15 +40,17 @@ const deleteStudent = async () =>{
     setError(err.response.data.message)
     setSuccess(null)
   })
-
-
 }
 
+function close(){
+  props.changeClass()
+  props.reloadStudents()
+}
 
   return (
     <section className={props.className}>
     <div className='modal__form modal__alumno'>
-      <div className='close' onClick={props.changeClass}>
+      <div className='close' onClick={close}>
         <FaIcons.FaTimes />
       </div>
 

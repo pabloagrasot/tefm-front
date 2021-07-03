@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as FaIcons from "react-icons/fa";
 import axios from 'axios';
 import {IValues} from './domain/values'
-import {Props} from '../utils/props'
+import {Props} from './domain/props'
 import { validationSchema } from './domain/validationSchema';
 
 const token = localStorage.getItem('token')
@@ -21,7 +21,7 @@ axios.get('http://localhost:3500/user', options)
       })
 
 
-export const AddAlumnos: FC<Props> = ({className, changeClass}) => {
+export const AddAlumnos: FC<Props> = ({className, changeClass, reloadStudents}) => {
   const [success, setSuccess] = useState(null)
   const [error, setError] = useState(null)
 
@@ -47,6 +47,11 @@ export const AddAlumnos: FC<Props> = ({className, changeClass}) => {
 
   }
 
+  function close(){
+    changeClass()
+    reloadStudents()
+  }
+
   const formik = useFormik({initialValues: { alumnoName: ''}, 
     validateOnBlur:true,
     onSubmit,
@@ -58,7 +63,7 @@ export const AddAlumnos: FC<Props> = ({className, changeClass}) => {
 
          <form className='modal__form' onSubmit={formik.handleSubmit} >
 
-           <div className='close' onClick={changeClass}>
+           <div className='close' onClick={close}>
               <FaIcons.FaTimes />
            </div>
 

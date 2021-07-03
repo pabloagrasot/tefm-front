@@ -1,4 +1,4 @@
-import { FC, useEffect, useState} from 'react'
+import { FC, useEffect, useState, } from 'react'
 import {AddAlumnos} from './Add-alumnos'
 import { Alumno } from '../alumno-results/Alumno';
 import { optionsHeaders } from '../utils/utils'
@@ -17,6 +17,9 @@ export const Alumnos: FC = () => {
   const [modalAlumno, setModalAlumno] = useState(false)
   const showAlumno = () => setModalAlumno(!modalAlumno);
 
+  const [renderAlumnos, setRenderAlumnos] = useState(false)
+  const reload = () => setRenderAlumnos(!renderAlumnos);
+
   const [students, setStudents] = useState<IStudent[]>([])
 
   const [alumno, setAlumno] = useState('')
@@ -28,7 +31,7 @@ export const Alumnos: FC = () => {
         setStudents(response.data.data)
       })
       
-  }, [])
+  }, [renderAlumnos])
 
   function getAlumno(alumnoName:string){
     showAlumno()
@@ -40,7 +43,7 @@ export const Alumnos: FC = () => {
       <h1>Alumnos</h1>
 
       <FaIcons.BsPlusCircleFill className='add-student-icon' onClick={showModal} />
-      <AddAlumnos changeClass={showModal} className={modal ? 'modal active' : 'modal'}></AddAlumnos>
+      <AddAlumnos reloadStudents={reload} changeClass={showModal} className={modal ? 'modal active' : 'modal'}></AddAlumnos>
 
      
       <section className='students_section'>
@@ -54,7 +57,7 @@ export const Alumnos: FC = () => {
             })}
       </section>
 
-     { (modalAlumno===true) && <Alumno changeClass={showAlumno} alumnoName={alumno} className={modalAlumno ? 'modal active' : 'modal'}></Alumno> }
+     { (modalAlumno===true) && <Alumno changeClass={showAlumno} reloadStudents={reload} alumnoName={alumno} className={modalAlumno ? 'modal active' : 'modal'}></Alumno> }
 
 
     </>
