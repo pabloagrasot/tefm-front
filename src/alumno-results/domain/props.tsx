@@ -9,3 +9,7 @@ export interface Props{
     showNewExercise: () => void
     apiGetAlumno:string
   }
+
+  export interface PropsExercises{
+    apiGetAlumno:string
+  }

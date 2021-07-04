@@ -10,3 +10,12 @@ export interface IStudent {
     user: string,
     _id: string
 }
+
+
+export interface IExercise {
+    exName:string,
+    dificulty:string,
+    time:number,
+    observations:string,
+}
+

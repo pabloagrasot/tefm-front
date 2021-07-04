@@ -1,5 +1,6 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect, FC} from 'react'
 import {AddExercise} from './Add-exercise'
+import {Exercises} from './exercises'
 import * as FaIcons from "react-icons/fa";
 import {Props} from './domain/props'
 import {IStudent} from './domain/interfaces'
@@ -10,7 +11,7 @@ import './alumno.css';
 
 
 
-export function Alumno(props:Props){
+export const Alumno: FC<Props> = ( {className, changeClass, alumnoName, reloadStudents}) => {
 
 const [getAlumno, setGetAlumno] = useState('')
 const [student, setStudent] = useState<IStudent>()
@@ -25,7 +26,7 @@ const showNewExercise = () => setNewExercise(!newExercise);
 
   useEffect(() => {
     SetApiGetAlumno(alumnoApi + getAlumno)
-    setGetAlumno(props.alumnoName)
+    setGetAlumno(alumnoName)
     if (getAlumno){
     axios.get<IStudent>(apiGetAlumno, optionsHeaders)
     .then((response:AxiosResponse) => {
@@ -50,12 +51,12 @@ const deleteStudent = async () =>{
 }
 
 function close(){
-  props.changeClass()
-  props.reloadStudents()
+  changeClass()
+  reloadStudents()
 }
 
   return (
-    <section className={props.className}>
+    <section className={className}>
     <div className='modal__form modal__alumno'>
       <div className='close' onClick={close}>
         <FaIcons.FaTimes />
@@ -71,6 +72,8 @@ function close(){
       </div>
 
       {(response === true) && <h2>{student?.alumnoName}</h2>}
+
+      <Exercises apiGetAlumno={apiGetAlumno}/>
 
       {  newExercise && <AddExercise apiGetAlumno={apiGetAlumno} showNewExercise={showNewExercise}/> }
 

@@ -2,7 +2,7 @@ import { FC, useState} from 'react'
 import { useFormik } from 'formik';
 import axios from 'axios';
 import {PropsNewEx} from './domain/props'
-import {IExercises} from './domain/values'
+import {IExercisesValues} from './domain/values'
 import { validationSchema } from './domain/validationSchema';
 import * as FaIcons from "react-icons/fa";
 import {optionsHeaders} from '../utils/utils'
@@ -14,7 +14,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, apiGetAlumno}) => 
   const [next, setNext] = useState(1)
 
 
-  const onSubmit = async (values:IExercises) => {
+  const onSubmit = async (values:IExercisesValues) => {
     
 
     const { ...data} = values
