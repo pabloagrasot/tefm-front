@@ -4,3 +4,8 @@ export interface Props{
     alumnoName:string
     reloadStudents: () => void
   }
+
+  export interface PropsNewEx{
+    showNewExercise: () => void
+    apiGetAlumno:string
+  }

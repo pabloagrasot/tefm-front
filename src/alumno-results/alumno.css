@@ -1,3 +1,43 @@
 .modal__alumno{
 width: 100%;
 }
+.student_buttons-flex{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    justify-content: center;
+}
+
+.student_buttons-flex > button{
+   width: auto;
+}
+
+.add-excercise > .modal__form{
+    width: auto;
+}
+
+.next-add-exercise{
+    margin-top: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+.next-add-exercise:hover{
+     color: #1a83ff;
+     text-decoration: none;
+     cursor: pointer;
+  }
+
+.last-input__add-excercise{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.add-excercise > .modal__form > .form-input, .add-excercise > .modal__form > .last-input__add-excercise > .form-input {
+    margin: 0 1rem;
+} 
+
+.add-excercise > .modal__form > .form-input > p, .add-excercise > .modal__form > .last-input__add-excercise > .form-input > p{
+    margin-bottom: 0.5rem;
+}
+

@@ -5,21 +5,8 @@ import axios from 'axios';
 import {IValues} from './domain/values'
 import {Props} from './domain/props'
 import { validationSchema } from './domain/validationSchema';
-
-const token = localStorage.getItem('token')
-const options = {
-    headers: {Authorization: token},
-}
-
-axios.get('http://localhost:3500/user', options)
-    .then( response => {
-        console.log(response)
-    })
-    .catch((err) => {
-        if (err && err.response)
-        console.log(err.response.message)
-      })
-
+import {optionsHeaders} from '../utils/utils'
+import {AddAlumnoApi} from './infrastructure/api'
 
 export const AddAlumnos: FC<Props> = ({className, changeClass, reloadStudents}) => {
   const [success, setSuccess] = useState(null)
@@ -31,7 +18,7 @@ export const AddAlumnos: FC<Props> = ({className, changeClass, reloadStudents}) 
     const { ...data} = values
 
 
-          const response = await axios.post('http://localhost:3500/pablo/students/new', data, options)
+          const response = await axios.post(AddAlumnoApi, data, optionsHeaders)
           
           .catch((err) => {
             if (err && err.response)

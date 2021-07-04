@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as FaIcons from "react-icons/fa";
 import axios from 'axios';
 import {Values} from './domain/values'
-import {Props} from '../utils/props'
+import {Props} from './domain/props'
 import { validationSchema } from './domain/validationSchema';
 
 export const Registro: FC<Props> = ({className, changeClass}) => {

@@ -1,4 +1,5 @@
-import { FC, useState, useEffect} from 'react'
+import { useState, useEffect} from 'react'
+import {AddExercise} from './Add-exercise'
 import * as FaIcons from "react-icons/fa";
 import {Props} from './domain/props'
 import {IStudent} from './domain/interfaces'
@@ -16,24 +17,30 @@ const [student, setStudent] = useState<IStudent>()
 const [apiGetAlumno, SetApiGetAlumno ] = useState('')
 const [success, setSuccess] = useState(null)
 const [error, setError] = useState(null)
+const [response, setResponse] = useState(false)
+const [newExercise, setNewExercise] = useState(false)
+const showNewExercise = () => setNewExercise(!newExercise);
 
 
 
   useEffect(() => {
     SetApiGetAlumno(alumnoApi + getAlumno)
     setGetAlumno(props.alumnoName)
-    const response = axios.get<IStudent>(apiGetAlumno, optionsHeaders)
+    if (getAlumno){
+    axios.get<IStudent>(apiGetAlumno, optionsHeaders)
     .then((response:AxiosResponse) => {
     setStudent(response.data.data)
-    })
+    setResponse(true)
+    })}
 
 }, [getAlumno, apiGetAlumno])
 
 const deleteStudent = async () =>{
-  const response = await axios.delete<IStudent>(apiGetAlumno, optionsHeaders)
+  await axios.delete<IStudent>(apiGetAlumno, optionsHeaders)
   .then((response:AxiosResponse) => {
     setError(null)
     setSuccess(response.data.message)
+    
   })
   .catch((err) => {
     if (err && err.response)
@@ -55,7 +62,7 @@ function close(){
       </div>
 
       <div className='student-img__circle'>
-        <img src={imgApi + student?.imagePath} alt="" />
+        {(response === true) && <img src={imgApi + student?.imagePath} alt="" />}
       </div>
 
       <div>
@@ -63,10 +70,14 @@ function close(){
           {success==null && <p className='form-error'> {error ? error: ''} </p>}
       </div>
 
-      <h2>{student?.alumnoName}</h2>
+      {(response === true) && <h2>{student?.alumnoName}</h2>}
 
+      {  newExercise && <AddExercise apiGetAlumno={apiGetAlumno} showNewExercise={showNewExercise}/> }
 
-      <button className='secundary-button' onClick={() => deleteStudent()}>Borrar Alumno</button>
+      <div className='student_buttons-flex'>
+        <button className='secundary-button' onClick={() => deleteStudent()}>Borrar Alumno</button>
+        <button className="primary-button" onClick={showNewExercise}> Guardar Ejercicio</button>
+      </div>
 
     </div>
     </section> 
