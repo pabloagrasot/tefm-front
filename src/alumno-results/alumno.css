@@ -1,6 +1,4 @@
-.modal__alumno{
-width: 100%;
-}
+
 .student_buttons-flex{
     display: flex;
     flex-wrap: wrap-reverse;
@@ -39,5 +37,127 @@ width: 100%;
 
 .add-excercise > .modal__form > .form-input > p, .add-excercise > .modal__form > .last-input__add-excercise > .form-input > p{
     margin-bottom: 0.5rem;
+}
+
+.exercise__section{
+    width: 100%;
+}
+
+.exercise__section-titles{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 2rem;
+}
+
+.exercise__section-titles > h3:first-of-type{
+    flex:2;
+    margin: 0 2rem;
+    padding: 1rem;
+}
+
+.exercise__section-titles > h3:last-of-type{
+    flex:1;
+    margin: 0 2rem;
+    padding: 1rem;
+}
+
+.exercise__section-exercise{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem 2rem;
+    border: 1px solid #f5f5f5;
+    border-radius: 8px;
+}
+
+.exercise__section-exercise-data{
+    background-color: #1a83ff;
+    padding: 1rem;
+    border-radius: 8px; 
+    flex:2;
+    margin: 1rem 2rem;
+}
+
+.exercise__section-exercise-date{
+    background-color: #333;
+    padding: 1rem;
+    border-radius: 8px; 
+    flex:1;
+    margin: 1rem 2rem;
+}
+
+.icon-delete-exercise{
+    position: relative;
+    float: right;
+    top: -70px;
+    left: 12Px;
+    font-size: 1.5rem;
+    min-width: 1.5rem;
+    color: #8b0000;
+    cursor: pointer
+}
+
+.icon-delete-exercise:hover, .icon-delete-exercisefocus {
+    animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    backface-visibility: hidden;
+    transform-origin: bottom left;
+  }
+  
+  @keyframes shake {
+    0% {
+      transform: rotate(0);
+    }
+    15% {
+      transform: rotate(5deg);
+    }
+    30% {
+      transform: rotate(-5deg);
+    }
+    45% {
+      transform: rotate(4deg);
+    }
+    60% {
+      transform: rotate(-4deg);
+    }
+    75% {
+      transform: rotate(2deg);
+    }
+    85% {
+      transform: rotate(-2deg);
+    }
+    92% {
+      transform: rotate(1deg);
+    }
+    100% {
+      transform: rotate(0);
+    }
+  }
+
+@media screen and (max-width: 600px) {
+    .exercise__section-exercise {
+        margin: 0.5rem 1rem;
+    }
+
+    .exercise__section-exercise-data{
+        margin: 1rem 0.5rem
+    }
+
+    .exercise__section-exercise-date{
+        margin: 1rem 0.5rem
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .exercise__section-exercise {
+        margin: 0.2rem 0
+    }
+
+    .icon-delete-exercise {
+
+        top: -75px;
+        left: 6Px;
+    }
 }
 

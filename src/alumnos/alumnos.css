@@ -73,11 +73,23 @@
 }
 
 @media screen and (max-width: 600px) {
+
+    .students_section {
+       align-items: center;
+       justify-content: center;
+     }
     .students_section > div{
         max-width: 100%;
         min-width: 100%;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .students_section {
+       margin: 2rem;
+    }
+}
+
 
 
 

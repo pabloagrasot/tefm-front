@@ -69,6 +69,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, apiGetAlumno}) => 
               <p>Dificultad</p>
               <input id="dificulty" placeholder='Dificultad' className='input' type='text' name='dificulty' value={formik.values.dificulty} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.dificulty && formik.errors.dificulty ? formik.errors.dificulty: ''}</div>
+              <FaIcons.FaArrowLeft onClick={() => setNext(1)} className='next-add-exercise'/>
               <FaIcons.FaArrowRight onClick={() => setNext(3)} className='next-add-exercise'/>
             </div>}
 
@@ -76,6 +77,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, apiGetAlumno}) => 
               <p>Tiempo</p>
               <input id="time" placeholder='Tiempo' className='input' type='text' name='time' value={formik.values.time} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.time && formik.errors.time ? formik.errors.time: ''}</div>
+              <FaIcons.FaArrowLeft onClick={() => setNext(2)} className='next-add-exercise'/>
               <FaIcons.FaArrowRight onClick={() => setNext(4)} className='next-add-exercise'/>
             </div>}
 
@@ -85,6 +87,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, apiGetAlumno}) => 
                   <p>Observaciones</p>
                   <input id="observations" placeholder='Observaciones' className='input' type='text' name='observations' value={formik.values.observations} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
                   <div className='input__error'>{formik.touched.observations && formik.errors.observations ? formik.errors.observations: ''}</div>
+                  <FaIcons.FaArrowLeft onClick={() => setNext(3)} className='next-add-exercise'/>
                 </div>
                 <button className='primary-button' type='submit'>Guardar</button>
             </div>}

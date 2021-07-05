@@ -17,5 +17,6 @@ export interface IExercise {
     dificulty:string,
     time:number,
     observations:string,
+    updatedAt:string
 }
 
