@@ -134,6 +134,7 @@
     }
   }
 
+
 @media screen and (max-width: 600px) {
     .exercise__section-exercise {
         margin: 0.5rem 1rem;
@@ -149,15 +150,30 @@
 }
 
 
-@media screen and (max-width: 400px) {
-    .exercise__section-exercise {
-        margin: 0.2rem 0
-    }
 
-    .icon-delete-exercise {
+@media screen and (max-width: 500px) {
+  .exercise__section-exercise {
+      flex-direction: column;
+  }
 
-        top: -75px;
-        left: 6Px;
-    }
+  .icon-delete-exercise {
+    top: -14.5rem;
+    left: 9.5rem;
+  }
+
 }
+
+
+@media screen and (max-width: 400px) {
+
+  .icon-delete-exercise {
+    top: -14.5rem;
+    left: 7.5rem;
+  }
+
+}
+
+
+
+
 

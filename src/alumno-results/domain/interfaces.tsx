@@ -18,5 +18,6 @@ export interface IExercise {
     time:number,
     observations:string,
     updatedAt:string
+    _id:string
 }
 

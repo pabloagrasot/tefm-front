@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, {AxiosResponse} from 'axios'
 
 
 export const token = localStorage.getItem('token')
@@ -8,7 +8,7 @@ export const optionsHeaders = {
 }
 
 export const getUserName = axios.get('http://localhost:3500/user', optionsHeaders)
-    .then( response => {
+    .then( (response:AxiosResponse )=> {
         const user = response.data.user.userName
     })
     .catch((err) => {

@@ -13,3 +13,8 @@ export interface Props{
   export interface PropsExercises{
     apiGetAlumno:string
   }
+
+  export interface PropsExerciseOptions{
+    exerciseID:string
+    api:string
+  }
