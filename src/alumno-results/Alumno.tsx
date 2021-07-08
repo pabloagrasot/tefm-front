@@ -34,7 +34,7 @@ const showNewExercise = () => setNewExercise(!newExercise);
     setResponse(true)
     })}
 
-}, [getAlumno, apiGetAlumno])
+}, [getAlumno, apiGetAlumno, newExercise])
 
 const deleteStudent = async () =>{
   await axios.delete<IStudent>(apiGetAlumno, optionsHeaders)
@@ -73,7 +73,7 @@ function close(){
 
       {(response === true) && <h2>{student?.alumnoName}</h2>}
 
-      <Exercises apiGetAlumno={apiGetAlumno}/>
+      <Exercises showNewExercise={showNewExercise} apiGetAlumno={apiGetAlumno}/>
 
       {  newExercise && <AddExercise apiGetAlumno={apiGetAlumno} showNewExercise={showNewExercise}/> }
 

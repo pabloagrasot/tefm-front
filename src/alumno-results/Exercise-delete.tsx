@@ -6,28 +6,24 @@ import {PropsExerciseOptions} from './domain/props'
 import { IExercise } from './domain/interfaces';
 
 
-export const ExerciseDelete: FC<PropsExerciseOptions> = ({exerciseID, api}) => {
-
-const [reloadExercises, setReloadExercises] = useState(false)
-  
+export const ExerciseDelete: FC<PropsExerciseOptions> = ({exerciseID, api, reloadExercises}) => {
 
 const apiDelete = api + '/' + exerciseID
 const deleteClick = (id:string) => {
     axios.delete<IExercise[]>(apiDelete, optionsHeaders)
   .then((response:AxiosResponse) => {
-    console.log(response.data.message)
-    setReloadExercises(true)
+    reloadExercises()
       })
     }
 useEffect(() => {
 
 
-}, [exerciseID, reloadExercises])
+}, [exerciseID])
 
   return (
     <section className='exercise-options'>
 
-    
+    <FaIcons.FaTrash className='icon-delete-exercise' onClick={() => deleteClick(exerciseID)} />
       
     </section> 
   )

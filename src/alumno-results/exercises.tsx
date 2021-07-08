@@ -6,10 +6,14 @@ import { optionsHeaders } from '../utils/utils'
 import axios, {AxiosResponse} from 'axios'
 import {ExerciseDelete} from './Exercise-delete'
 
-export const Exercises: FC<PropsExercises> = ({apiGetAlumno}) => {
+export const Exercises: FC<PropsExercises> = ({apiGetAlumno, showNewExercise}) => {
 
     const [exercises, setExercises] = useState<IExercise[]>([])
     const [api, setApi] = useState('')
+
+    const [renderExercises, setRenderExercises] = useState(false)
+    const reload = () => setRenderExercises(!renderExercises);
+
 
     useEffect(() => {
       setApi(apiGetAlumno + exercisesApi)
@@ -18,7 +22,7 @@ export const Exercises: FC<PropsExercises> = ({apiGetAlumno}) => {
       setExercises(response.data.data)
           })
           
-      }, [api])
+      }, [api, renderExercises, showNewExercise])
 
     return (
       <section className='exercise__section'>
@@ -42,9 +46,10 @@ export const Exercises: FC<PropsExercises> = ({apiGetAlumno}) => {
                   <p>{exercise.updatedAt.slice(0, -14)}</p>
                 </div>
 
-                <ExerciseDelete api={api} exerciseID={exercise._id} />
+                <ExerciseDelete reloadExercises={reload} api={api} exerciseID={exercise._id} />
             </div>
               )})}
+              
       </section> 
     )
   }

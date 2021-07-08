@@ -7,9 +7,12 @@ import './alumnos.css';
 import * as FaIcons from "react-icons/bs";
 import { alumnosApi, imgApi } from './infrastructure/api';
 import {IStudent} from './domain/interfaces'
+import { FaWindows } from 'react-icons/fa';
 
 
 export const Alumnos: FC = () => {
+
+  const [logged, setLogged] = useState(false)
 
   const [modal, setModal] = useState(false)
   const showModal = () => setModal(!modal);
@@ -28,6 +31,7 @@ export const Alumnos: FC = () => {
   useEffect(() => {
     axios.get<IStudent[]>(alumnosApi, optionsHeaders)
       .then((response:AxiosResponse) => {
+        setLogged(true)
         setStudents(response.data.data)
       })
       
@@ -42,7 +46,13 @@ export const Alumnos: FC = () => {
     <>
       <h1>Alumnos</h1>
 
-      <FaIcons.BsPlusCircleFill className='add-student-icon' onClick={showModal} />
+
+      { !logged && <div><p>Accede a tu cuenta para llevar el seguimieto de tus alumnos.</p>
+
+        <button className="primary-button" onClick={() => window.location.href ='/acceso/'}>Accede</button>
+        </div>}
+
+      { logged && <FaIcons.BsPlusCircleFill className='add-student-icon' onClick={showModal} /> }   
       <AddAlumnos reloadStudents={reload} changeClass={showModal} className={modal ? 'modal active' : 'modal'}></AddAlumnos>
 
      

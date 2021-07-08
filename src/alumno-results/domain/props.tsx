@@ -12,9 +12,11 @@ export interface Props{
 
   export interface PropsExercises{
     apiGetAlumno:string
+    showNewExercise: () => void
   }
 
   export interface PropsExerciseOptions{
     exerciseID:string
     api:string
+    reloadExercises: () => void
   }

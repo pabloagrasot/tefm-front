@@ -26,6 +26,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, apiGetAlumno}) => 
             if (err && err.response)
             setError(err.response.data.message)
             setSuccess(null)
+            
           })
 
           if(response && response.data){
@@ -62,7 +63,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, apiGetAlumno}) => 
               <p>Nombre del Ejercicio</p>
               <input id="exName" placeholder='Nombre del ejercicio' className='input' type='text' name='exName' value={formik.values.exName} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.exName && formik.errors.exName ? formik.errors.exName: ''}</div>
-              <FaIcons.FaArrowRight onClick={() => setNext(2)} className='next-add-exercise'/>
+              {formik.touched.exName && !formik.errors.exName && <FaIcons.FaArrowRight onClick={() => setNext(2)} className='next-add-exercise'/>}
             </div>}
 
             { (next === 2) && <div className='form-input'>
@@ -70,7 +71,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, apiGetAlumno}) => 
               <input id="dificulty" placeholder='Dificultad' className='input' type='text' name='dificulty' value={formik.values.dificulty} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.dificulty && formik.errors.dificulty ? formik.errors.dificulty: ''}</div>
               <FaIcons.FaArrowLeft onClick={() => setNext(1)} className='next-add-exercise'/>
-              <FaIcons.FaArrowRight onClick={() => setNext(3)} className='next-add-exercise'/>
+              {formik.touched.dificulty && !formik.errors.dificulty && <FaIcons.FaArrowRight onClick={() => setNext(3)} className='next-add-exercise'/>}
             </div>}
 
             {(next === 3) && <div className='form-input'>
@@ -78,7 +79,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, apiGetAlumno}) => 
               <input id="time" placeholder='Tiempo' className='input' type='text' name='time' value={formik.values.time} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.time && formik.errors.time ? formik.errors.time: ''}</div>
               <FaIcons.FaArrowLeft onClick={() => setNext(2)} className='next-add-exercise'/>
-              <FaIcons.FaArrowRight onClick={() => setNext(4)} className='next-add-exercise'/>
+              {formik.touched.time && !formik.errors.time && <FaIcons.FaArrowRight onClick={() => setNext(4)} className='next-add-exercise'/>}
             </div>}
 
             {(next === 4) && 

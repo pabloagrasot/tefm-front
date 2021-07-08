@@ -24,7 +24,7 @@ const End: FC = () =>{
 
           <div className="exercise-end_buttons">
            <button className='secundary-button' onClick={() => window.location.reload()}>Empezar</button>
-           <button className='primary-button'>Guardar resultados</button>
+           <button className='primary-button' onClick={() => window.location.href ='/alumnos/' }>Guardar resultados</button>
           </div>
            
          </div>
