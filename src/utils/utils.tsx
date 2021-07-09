@@ -1,7 +1,13 @@
 import axios, {AxiosResponse} from 'axios'
 
 
-export const token = localStorage.getItem('token')
+export const token = sessionStorage.getItem('token')
+
+export const deleteToken = () => {
+    sessionStorage.removeItem('token');
+}
+
+
 
 export const optionsHeaders = {
     headers: {Authorization: token},

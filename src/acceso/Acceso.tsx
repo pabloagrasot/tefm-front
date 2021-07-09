@@ -27,7 +27,7 @@ export const Acceso : FC = () => {
           if(response && response.data){
             formik.resetForm()
             window.location.href ='/alumnos/';
-            localStorage.setItem('token', response.data.token)
+            sessionStorage.setItem('token', response.data.token)
           }
 
   }

@@ -4,15 +4,20 @@ import { Alumno } from '../alumno-results/Alumno';
 import { optionsHeaders } from '../utils/utils'
 import axios, { AxiosResponse } from 'axios'
 import './alumnos.css';
-import * as FaIcons from "react-icons/bs";
+import * as BoostrapIcons from "react-icons/bs";
+import * as Heroicons from "react-icons/hi";
+import * as Githubicons from "react-icons/go";
 import { alumnosApi, imgApi } from './infrastructure/api';
 import {IStudent} from './domain/interfaces'
-import { FaWindows } from 'react-icons/fa';
+import {deleteToken} from '../utils/utils'
+
 
 
 export const Alumnos: FC = () => {
 
   const [logged, setLogged] = useState(false)
+  const [logOptions, setLogOptions] = useState(false)
+  const showMlogOptions = () => setLogOptions(!logOptions);
 
   const [modal, setModal] = useState(false)
   const showModal = () => setModal(!modal);
@@ -42,6 +47,12 @@ export const Alumnos: FC = () => {
     setAlumno(alumnoName)
   }
 
+
+  function logOut() {
+  deleteToken()
+  window.location.href ='/'
+  }
+
   return (
     <>
       <h1>Alumnos</h1>
@@ -52,7 +63,27 @@ export const Alumnos: FC = () => {
         <button className="primary-button" onClick={() => window.location.href ='/acceso/'}>Accede</button>
         </div>}
 
-      { logged && <FaIcons.BsPlusCircleFill className='add-student-icon' onClick={showModal} /> }   
+      { logged && <Heroicons.HiDotsVertical className='options-icon' onClick={showMlogOptions}/>}
+
+      { logOptions && logged && <ul className='modal__options-icon'>  
+
+          <li className='nav-link' onClick={showModal}>
+            <a>
+              <BoostrapIcons.BsPlusCircleFill/>
+              <span className='nav-link__title'>Añadir alumno</span>
+            </a>
+          </li>
+
+          <li className='nav-link' onClick={logOut}>
+            <a>
+              <Githubicons.GoSignOut/>
+              <span className='nav-link__title'>Cerrar sesión</span>
+            </a>
+          </li>
+
+      </ul> }
+
+
       <AddAlumnos reloadStudents={reload} changeClass={showModal} className={modal ? 'modal active' : 'modal'}></AddAlumnos>
 
      

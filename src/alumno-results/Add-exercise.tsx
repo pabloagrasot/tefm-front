@@ -1,13 +1,14 @@
-import { FC, useState} from 'react'
+import { FC, useState, useEffect} from 'react'
 import { useFormik } from 'formik';
 import axios from 'axios';
 import {PropsNewEx} from './domain/props'
+import { alumnoApi, imgApi } from './infrastructure/api';
 import {IExercisesValues} from './domain/values'
 import { validationSchema } from './domain/validationSchema';
 import * as FaIcons from "react-icons/fa";
 import {optionsHeaders} from '../utils/utils'
 
-export const AddExercise: FC<PropsNewEx> = ({showNewExercise, apiGetAlumno}) => {
+export const AddExercise: FC<PropsNewEx> = ({showNewExercise, getAlumno}) => {
 
   const [success, setSuccess] = useState(null)
   const [error, setError] = useState(null)
@@ -19,8 +20,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, apiGetAlumno}) => 
 
     const { ...data} = values
 
-
-          const response = await axios.post(apiGetAlumno, data, optionsHeaders)
+          const response = await axios.post(alumnoApi + getAlumno, data, optionsHeaders)
           
           .catch((err) => {
             if (err && err.response)
@@ -35,9 +35,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, apiGetAlumno}) => 
             formik.resetForm()
             showNewExercise()
           }
-
   }
-
 
   const formik = useFormik({initialValues: { exName:'', dificulty:'', time:'', observations:''}, 
     validateOnBlur:true,
@@ -63,7 +61,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, apiGetAlumno}) => 
               <p>Nombre del Ejercicio</p>
               <input id="exName" placeholder='Nombre del ejercicio' className='input' type='text' name='exName' value={formik.values.exName} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.exName && formik.errors.exName ? formik.errors.exName: ''}</div>
-              {formik.touched.exName && !formik.errors.exName && <FaIcons.FaArrowRight onClick={() => setNext(2)} className='next-add-exercise'/>}
+              { formik.touched.exName && !formik.errors.exName && <FaIcons.FaArrowRight onClick={() => setNext(2)} className='next-add-exercise'/>}
             </div>}
 
             { (next === 2) && <div className='form-input'>

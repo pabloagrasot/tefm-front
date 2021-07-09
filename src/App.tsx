@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import './App.css';
 import { Ejercicios } from './ejercicio/Ejercicios';
 import { Acceso } from './acceso/Acceso';
 import { Alumnos } from './alumnos/Alumnos';

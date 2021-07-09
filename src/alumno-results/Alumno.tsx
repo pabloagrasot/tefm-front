@@ -13,9 +13,8 @@ import './alumno.css';
 
 export const Alumno: FC<Props> = ( {className, changeClass, alumnoName, reloadStudents}) => {
 
-const [getAlumno, setGetAlumno] = useState('')
+const [getAlumno, setGetAlumno] = useState(alumnoName)
 const [student, setStudent] = useState<IStudent>()
-const [apiGetAlumno, SetApiGetAlumno ] = useState('')
 const [success, setSuccess] = useState(null)
 const [error, setError] = useState(null)
 const [response, setResponse] = useState(false)
@@ -25,19 +24,18 @@ const showNewExercise = () => setNewExercise(!newExercise);
 
 
   useEffect(() => {
-    SetApiGetAlumno(alumnoApi + getAlumno)
-    setGetAlumno(alumnoName)
+
     if (getAlumno){
-    axios.get<IStudent>(apiGetAlumno, optionsHeaders)
+    axios.get<IStudent>(alumnoApi + getAlumno, optionsHeaders)
     .then((response:AxiosResponse) => {
     setStudent(response.data.data)
     setResponse(true)
     })}
 
-}, [getAlumno, apiGetAlumno, newExercise])
+}, [newExercise])
 
 const deleteStudent = async () =>{
-  await axios.delete<IStudent>(apiGetAlumno, optionsHeaders)
+  await axios.delete<IStudent>(alumnoApi + getAlumno, optionsHeaders)
   .then((response:AxiosResponse) => {
     setError(null)
     setSuccess(response.data.message)
@@ -73,9 +71,9 @@ function close(){
 
       {(response === true) && <h2>{student?.alumnoName}</h2>}
 
-      <Exercises showNewExercise={showNewExercise} apiGetAlumno={apiGetAlumno}/>
+      <Exercises showNewExercise={showNewExercise} getAlumno={getAlumno}/>
 
-      {  newExercise && <AddExercise apiGetAlumno={apiGetAlumno} showNewExercise={showNewExercise}/> }
+      {  newExercise && <AddExercise getAlumno={getAlumno} showNewExercise={showNewExercise}/> }
 
       <div className='student_buttons-flex'>
         <button className='secundary-button' onClick={() => deleteStudent()}>Borrar Alumno</button>

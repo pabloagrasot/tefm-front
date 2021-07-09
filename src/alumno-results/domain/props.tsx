@@ -7,16 +7,16 @@ export interface Props{
 
   export interface PropsNewEx{
     showNewExercise: () => void
-    apiGetAlumno:string
+    getAlumno:string
   }
 
   export interface PropsExercises{
-    apiGetAlumno:string
+    getAlumno:string
     showNewExercise: () => void
   }
 
-  export interface PropsExerciseOptions{
+  export interface PropsExerciseDelete{
     exerciseID:string
-    api:string
+    getAlumno:string
     reloadExercises: () => void
   }
