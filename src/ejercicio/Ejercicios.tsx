@@ -26,7 +26,7 @@ export const Ejercicios: FC = () => {
   const [pointer, setPointer] = useState(true)
   const [gif, setGif] = useState(deporte)
   const [exercise , setExercise] = useState ('')
-  //const [EndExercise , setEndExercise] = useState<React.LazyExoticComponent<FC>>()
+ 
 
 
   const selectSeconds = (e: ChangeEvent<any>) => {
@@ -146,6 +146,13 @@ export const Ejercicios: FC = () => {
 
             <button onClick={() => setTimerOn(true)} className={"primary-button"} >Empezar</button>
           </div>
+
+          
+            <div className='progress-bar'>
+                <div className='progress-bar__background' style={{width: `${percentage}%`}}>{seconds}</div>
+            </div>
+
+
         </div>
 
         <div>

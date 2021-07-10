@@ -79,7 +79,7 @@ function close(){
 
       <div className='student_buttons-flex'>
         <button className='secundary-button' onClick={() => deleteStudent()}>Borrar Alumno</button>
-        <button className="primary-button" onClick={showNewExercise}> Guardar Ejercicio</button>
+        <button className="primary-button" onClick={showNewExercise}>Nuevo Ejercicio</button>
       </div>
 
     </div>

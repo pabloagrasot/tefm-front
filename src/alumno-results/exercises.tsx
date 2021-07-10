@@ -5,7 +5,6 @@ import {exercisesApi, alumnoApi} from './infrastructure/api'
 import { optionsHeaders } from '../utils/utils'
 import axios, {AxiosResponse} from 'axios'
 import {ExerciseDelete} from './Exercise-delete'
-import { object } from 'yup'
 import * as RemixIcons from 'react-icons/ri'
 
 export const Exercises: FC<PropsExercises> = ({showNewExercise, getAlumno}) => {

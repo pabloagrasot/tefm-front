@@ -22,10 +22,10 @@ useEffect(() => {
 }, [exerciseID])
 
   return (
-    <section className='exercise-options'>
+    
 
     <FaIcons.FaTrash className='icon-delete-exercise' onClick={() => deleteClick(exerciseID)} />
       
-    </section> 
+   
   )
 }
