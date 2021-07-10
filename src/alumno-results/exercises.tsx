@@ -5,6 +5,8 @@ import {exercisesApi, alumnoApi} from './infrastructure/api'
 import { optionsHeaders } from '../utils/utils'
 import axios, {AxiosResponse} from 'axios'
 import {ExerciseDelete} from './Exercise-delete'
+import { object } from 'yup'
+import * as RemixIcons from 'react-icons/ri'
 
 export const Exercises: FC<PropsExercises> = ({showNewExercise, getAlumno}) => {
 
@@ -12,6 +14,7 @@ export const Exercises: FC<PropsExercises> = ({showNewExercise, getAlumno}) => {
 
     const [renderExercises, setRenderExercises] = useState(false)
     const reload = () => setRenderExercises(!renderExercises);
+    const [order, setOrder] =  useState(false)
 
 
     useEffect(() => {
@@ -23,12 +26,29 @@ export const Exercises: FC<PropsExercises> = ({showNewExercise, getAlumno}) => {
       }, [renderExercises, showNewExercise])
 
 
+    useEffect(() => {
+
+      if (order === true){
+        setExercises(exercises.sort( (a,b) =>  a.exName > b.exName ? -1 : 1))
+      }if (order === false) {
+        setExercises(exercises.sort( (a,b) =>  a.exName < b.exName ? -1 : 1))
+      }
+      
+      console.log(exercises)
+      console.log(order)
+    }, [order, exercises, renderExercises, showNewExercise])
+
 
     return (
       <section className='exercise__section'>
         <div className='exercise__section-titles'>
           <h3>Ejercicios</h3>
-          <h3>Fecha</h3>
+
+         
+            <h3>Fecha <span><RemixIcons.RiArrowUpDownFill  className='exercise__section-order-icon' onClick={() => setOrder(!order)}/></span></h3>
+            
+          
+          
         </div>
         {exercises.map((exercise:IExercise, index) => {
             return (

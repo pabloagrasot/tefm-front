@@ -17,7 +17,6 @@ const [getAlumno, setGetAlumno] = useState(alumnoName)
 const [student, setStudent] = useState<IStudent>()
 const [success, setSuccess] = useState(null)
 const [error, setError] = useState(null)
-const [response, setResponse] = useState(false)
 const [newExercise, setNewExercise] = useState(false)
 const showNewExercise = () => setNewExercise(!newExercise);
 
@@ -29,7 +28,6 @@ const showNewExercise = () => setNewExercise(!newExercise);
     axios.get<IStudent>(alumnoApi + getAlumno, optionsHeaders)
     .then((response:AxiosResponse) => {
     setStudent(response.data.data)
-    setResponse(true)
     })}
 
 }, [newExercise])
@@ -59,9 +57,13 @@ function close(){
       <div className='close' onClick={close}>
         <FaIcons.FaTimes />
       </div>
+      
+      <div className='alumno-data'>
+        <div className='student-img__circle'>
+          <img src={imgApi + student?.imagePath} alt="" />
+        </div>
 
-      <div className='student-img__circle'>
-        {(response === true) && <img src={imgApi + student?.imagePath} alt="" />}
+        <h2>{student?.alumnoName}</h2>
       </div>
 
       <div>
@@ -69,7 +71,7 @@ function close(){
           {success==null && <p className='form-error'> {error ? error: ''} </p>}
       </div>
 
-      {(response === true) && <h2>{student?.alumnoName}</h2>}
+
 
       <Exercises showNewExercise={showNewExercise} getAlumno={getAlumno}/>
 

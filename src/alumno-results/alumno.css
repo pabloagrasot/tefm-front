@@ -1,3 +1,11 @@
+.alumno-data{
+  display:flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 0 2rem
+}
+
 
 .student_buttons-flex{
     display: flex;
@@ -50,18 +58,29 @@
     margin: 0 2rem;
 }
 
-.exercise__section-titles > h3:first-of-type{
-    flex:2;
-    margin: 0 2rem;
+.exercise__section-titles > h3{
+    margin: 0 1rem;
     padding: 1rem;
 }
 
-.exercise__section-titles > h3:last-of-type{
-    flex:1;
-    margin: 0 2rem;
-    padding: 1rem;
+.exercise__section-titles > h3:first-child{
+flex:2
 }
 
+.exercise__section-titles > h3:last-child{
+  flex:1
+  }
+  
+
+.exercise__section-order-icon{
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.exercise__section-order-icon:hover{
+  color: #1a83ff;
+} 
+  
 .exercise__section-exercise{
     display: flex;
     justify-content: space-around;
@@ -76,7 +95,7 @@
     padding: 1rem;
     border-radius: 8px; 
     flex:2;
-    margin: 1rem 2rem;
+    margin: 1rem;
 }
 
 .exercise__section-exercise-date{
@@ -84,7 +103,7 @@
     padding: 1rem;
     border-radius: 8px; 
     flex:1;
-    margin: 1rem 2rem;
+    margin: 1rem;
 }
 
 .icon-delete-exercise{
@@ -103,7 +122,7 @@
     backface-visibility: hidden;
     transform-origin: bottom left;
   }
-  
+
   @keyframes shake {
     0% {
       transform: rotate(0);
@@ -137,7 +156,7 @@
 
 @media screen and (max-width: 600px) {
     .exercise__section-exercise {
-        margin: 0.5rem 1rem;
+        margin: 1rem;
     }
 
     .exercise__section-exercise-data{
@@ -155,6 +174,15 @@
   .exercise__section-exercise {
       flex-direction: column;
   }
+
+  .exercise__section-exercise-data{
+    width: 90%;
+  }
+    
+  .exercise__section-exercise-date{
+      width: 70%;
+    }
+      
 
   .icon-delete-exercise {
     top: -14.5rem;
