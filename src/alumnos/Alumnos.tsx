@@ -1,4 +1,5 @@
 import { FC, useEffect, useState, } from 'react'
+import {Link} from 'react-router-dom'
 import {AddAlumnos} from './Add-alumnos'
 import { Alumno } from '../alumno-results/Alumno';
 import { optionsHeaders } from '../utils/utils'
@@ -6,16 +7,17 @@ import axios, { AxiosResponse } from 'axios'
 import './alumnos.css';
 import * as BoostrapIcons from "react-icons/bs";
 import * as Heroicons from "react-icons/hi";
-import * as Githubicons from "react-icons/go";
+import * as FaIcons from "react-icons/fa";
 import { alumnosApi, imgApi } from './infrastructure/api';
 import {IStudent} from './domain/interfaces'
-import {deleteToken} from '../utils/utils'
+
 
 
 
 export const Alumnos: FC = () => {
 
   const [logged, setLogged] = useState(false)
+
   const [logOptions, setLogOptions] = useState(false)
   const showMlogOptions = () => setLogOptions(!logOptions);
 
@@ -48,11 +50,6 @@ export const Alumnos: FC = () => {
   }
 
 
-  function logOut() {
-  deleteToken()
-  window.location.href ='/'
-  }
-
   return (
     <>
       <h1>Alumnos</h1>
@@ -68,17 +65,17 @@ export const Alumnos: FC = () => {
       { logOptions && logged && <ul className='modal__options-icon'>  
 
           <li className='nav-link' onClick={showModal}>
-            <a>
+          <Link to='#'>
               <BoostrapIcons.BsPlusCircleFill/>
               <span className='nav-link__title'>Añadir alumno</span>
-            </a>
+              </Link>
           </li>
 
-          <li className='nav-link' onClick={logOut}>
-            <a>
-              <Githubicons.GoSignOut/>
-              <span className='nav-link__title'>Cerrar sesión</span>
-            </a>
+          <li className='nav-link'>
+            <Link to='/ejercicios'>
+              <FaIcons.FaRunning/>
+              <span className='nav-link__title'>Hacer ejercicio</span>
+            </Link>
           </li>
 
       </ul> }
@@ -97,6 +94,13 @@ export const Alumnos: FC = () => {
               );
             })}
       </section>
+
+      {  logged && 
+      <button onClick={showModal} className='primary-button'>
+          <BoostrapIcons.BsPlusCircleFill/>
+          <span className='nav-link__title'>Añadir alumno</span>
+      </button>
+      }
 
      { (modalAlumno===true) && <Alumno changeClass={showAlumno} reloadStudents={reload} alumnoName={alumno} className={modalAlumno ? 'modal active' : 'modal'}></Alumno> }
 

@@ -22,19 +22,17 @@ export const Exercises: FC<PropsExercises> = ({showNewExercise, getAlumno}) => {
       setExercises(response.data.data)
           })
           
-      }, [renderExercises, showNewExercise])
+      }, [renderExercises, showNewExercise, getAlumno])
 
 
     useEffect(() => {
 
       if (order === true){
-        setExercises(exercises.sort( (a,b) =>  a.exName > b.exName ? -1 : 1))
+        setExercises(exercises.reverse())
       }if (order === false) {
-        setExercises(exercises.sort( (a,b) =>  a.exName < b.exName ? -1 : 1))
+        setExercises(exercises.reverse())
       }
       
-      console.log(exercises)
-      console.log(order)
     }, [order, exercises, renderExercises, showNewExercise])
 
 

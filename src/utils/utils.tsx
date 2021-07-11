@@ -6,7 +6,11 @@ export const token = sessionStorage.getItem('token')
 export const deleteToken = () => {
     sessionStorage.removeItem('token');
 }
-
+      
+export const logOut = () => {
+    deleteToken()
+    window.location.href ='/'
+    }
 
 
 export const optionsHeaders = {
@@ -21,4 +25,3 @@ export const getUserName = axios.get('http://localhost:3500/user', optionsHeader
         if (err && err.response)
         console.log(err.response.message)
       })
-

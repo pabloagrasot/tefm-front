@@ -21,7 +21,6 @@ export const Acceso : FC = () => {
           const response = await axios.post('http://localhost:3500/signin', data).catch((err) => {
             if (err && err.response)
             setError(err.response.data.message)
-            console.log(err.response.data.message)
           })
 
           if(response && response.data){

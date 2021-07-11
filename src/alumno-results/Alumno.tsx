@@ -30,7 +30,7 @@ const showNewExercise = () => setNewExercise(!newExercise);
     setStudent(response.data.data)
     })}
 
-}, [newExercise])
+}, [newExercise, getAlumno])
 
 const deleteStudent = async () =>{
   await axios.delete<IStudent>(alumnoApi + getAlumno, optionsHeaders)

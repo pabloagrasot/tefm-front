@@ -1,8 +1,8 @@
-import { FC, useState, useEffect} from 'react'
+import { FC, useState} from 'react'
 import { useFormik } from 'formik';
 import axios from 'axios';
 import {PropsNewEx} from './domain/props'
-import { alumnoApi, imgApi } from './infrastructure/api';
+import { alumnoApi } from './infrastructure/api';
 import {IExercisesValues} from './domain/values'
 import { validationSchema } from './domain/validationSchema';
 import * as FaIcons from "react-icons/fa";

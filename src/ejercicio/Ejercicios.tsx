@@ -7,17 +7,7 @@ import deporte from '../img/deporte.png'
 import noDeporte from '../img/no-deporte.png'
 import './ejercicios.css';
 
-
-
-
 export const Ejercicios: FC = () => {
-
-  const circleConfig = {
-    viewBox: '0 0 38 38',
-    x: '19',
-    y: '19',
-    radio: '15.91549430918954'
-  };
 
   const [timerOn, setTimerOn] = useState(false)
   const [seconds, setSeconds] = useState(30);
@@ -26,6 +16,8 @@ export const Ejercicios: FC = () => {
   const [pointer, setPointer] = useState(true)
   const [gif, setGif] = useState(deporte)
   const [exercise , setExercise] = useState ('')
+
+  const [pointerButton, setPointerButton] = useState(0)
  
 
 
@@ -33,6 +25,7 @@ export const Ejercicios: FC = () => {
     let secondsSelected = e.target.value
     setSeconds(secondsSelected)
     setWatch(100/secondsSelected)
+    setPointerButton(1)
   }
 
   const selectExercise = (e: ChangeEvent<any>) => {
@@ -44,6 +37,7 @@ export const Ejercicios: FC = () => {
       setExercise(bici)
       setGif(biciPng)
     }
+    setPointerButton(2)
   }
 
   useEffect(() => {
@@ -74,38 +68,12 @@ export const Ejercicios: FC = () => {
 
       <section className="exercise">
         <div>
-          <figure>
-            <svg viewBox={circleConfig.viewBox} className="circle">
-              <circle
-                className="ring"
-                cx={circleConfig.x}
-                cy={circleConfig.y}
-                r={circleConfig.radio}
-                fill="transparent"
-                stroke="gray"
-                strokeDasharray="100"
-                strokeDashoffset="100"
-                stroke-width="6"
-              />
+          <img src={gif} alt="" className="exercise-gif" />
 
-              <circle
-                className="path"
-                cx={circleConfig.x}
-                cy={circleConfig.y}
-                r={circleConfig.radio}
-                fill="transparent"
-                stroke="#1a83ff"
-                strokeDasharray="100"
-                strokeDashoffset={percentage}
-                stroke-width="6"
-              />
-              <g className="circle-label">
-                <text x="50%" y="50%" className="circle-percentage">
-                  {seconds}
-                </text>
-              </g>
-            </svg>
-          </figure>
+          <div className='progress-bar'>
+                <div className='progress-bar__background' style={{width: `${percentage}%`}}><span>{seconds}</span></div>
+          </div>
+
 
           <div className="exercise__configuration">
             <select
@@ -144,20 +112,11 @@ export const Ejercicios: FC = () => {
               <option value="bike">Montar en Bici</option>
             </select>
 
-            <button onClick={() => setTimerOn(true)} className={"primary-button"} >Empezar</button>
+            <button onClick={() => setTimerOn(true)} className={"primary-button"}>Empezar</button>
           </div>
 
-          
-            <div className='progress-bar'>
-                <div className='progress-bar__background' style={{width: `${percentage}%`}}>{seconds}</div>
-            </div>
-
-
         </div>
 
-        <div>
-          <img src={gif} alt="" className="exercise-gif" />
-        </div>
       </section>
       <Suspense fallback={null}>
       {(seconds === 0) && <End />}

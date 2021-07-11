@@ -25,6 +25,8 @@
   font-size: 2rem;
   background: none;
   color :#f5f5f5;
+  z-index: 24;
+  cursor: pointer;
 }
 
 .nav-menu {
@@ -48,6 +50,23 @@
   transition: 350ms;
   z-index: 3;
 }
+
+.modal__loggin-icon{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: absolute;
+  float: right;
+  right: 0;
+  top: 2rem;
+  background-color: #333;
+  width: 20rem;
+  border-radius: 8px;
+  z-index: 3;
+  padding: 1rem;
+ }
+
+
 @media screen and (max-width: 600px) {
   .nav-menu.active {
    width: 100%;
