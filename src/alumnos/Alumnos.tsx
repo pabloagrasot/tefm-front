@@ -55,7 +55,7 @@ export const Alumnos: FC = () => {
       <h1>Alumnos</h1>
 
 
-      { !logged && <div><p>Accede a tu cuenta para llevar el seguimieto de tus alumnos.</p>
+      { !logged && <div><p style={{color:'#f5f5f5'}}>Accede a tu cuenta para llevar el seguimieto de tus alumnos.</p>
 
         <button className="primary-button" onClick={() => window.location.href ='/acceso/'}>Accede</button>
         </div>}
