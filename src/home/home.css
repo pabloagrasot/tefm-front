@@ -99,7 +99,6 @@ text-align: left;
     margin: 0 2rem;
     background-color: #333;
     color: #f1f1f1;
-    
 }
 
 .box > img{
@@ -113,10 +112,17 @@ text-align: left;
     flex-direction: column;
     }
 
-   
-
     .home-body__section > img{
     margin-top: 2rem;
+    }
+
+    .home-body__box{
+        margin: 5rem;
+        flex-direction: column;
+    }
+
+    .box{
+        margin: 1rem 0;
     }
 
 }
@@ -135,11 +141,16 @@ text-align: left;
         max-width: 25rem;
         flex: auto;
     }
-        .hero > h2  {
+
+    .hero > h2  {
         font-size: 3rem;
         margin: 2rem 1rem;
         flex: auto;
         }
+
+    .home-body__box{
+         margin: 2rem;
+    }
     
 }
     
@@ -163,6 +174,10 @@ text-align: left;
     .home-body__section-text > p{
         font-size: 1.2rem;
     }
+
+    .home-body__box{
+        margin: 1rem;
+   }
 }
 
 @media (max-width: 400px) {
