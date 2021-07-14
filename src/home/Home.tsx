@@ -40,7 +40,7 @@ export const Home : FC = () => {
             <img src={gracias} />
             <div className='box-text'>
               <p>Especial agradecimiento a Raquel, Álvaro, Gema y Tobal.</p>
-              <p>Esta aplicación estará en continua mejora y progresivamente se irán añadiendo nuevos ejercicios y funcionalidades. Si eres un profesional del sector de la Educación y tienes cualquier duda o sugerencia, puedes contactar conmigo a través de mi email <a href='mailto:p.m.agrasot@hotmail.com'>p.m.agrasot@hotmail.com</a></p>
+              <p>Esta aplicación estará en continua mejora y progresivamente se irán añadiendo nuevos ejercicios y funcionalidades. Si eres un profesional del sector de la Educación y tienes cualquier duda o sugerencia, puedes contactar conmigo a través de mi email <a href='mailto:info@training-tea.es'>info@training-tea.es</a></p>
               <small>*Los pictogramas utilizados son parte del material que comparte el Centro Aragonés para la Comunicación Aumentativa y Alternativa (ARASAAC). Los iconos utilizados como foto de perfil de los alumnos, han sido creados por @macrovector y se pueden encontrar de manera gratuita en la web freepik.</small>
             </div>
           </div>  
