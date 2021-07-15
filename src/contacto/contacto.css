@@ -1,6 +1,6 @@
 .contact__section{
-    margin: 0 5rem;
-    color: #f5f5f5;
+    margin: 0 var(--margin-l);
+    color: var(--white-color);
 }
 
 .form-input.mensaje > textarea{
@@ -9,7 +9,7 @@
 
 @media (max-width: 900px) {
     .contact__section{
-        margin: 0 2rem;
+        margin: 0 var(--margin-m);
     }   
 }
 

@@ -6,6 +6,7 @@ import { Registro } from '../registro/Registro'
 import { validationSchema } from './domain/validationSchema';
 import axios from 'axios';
 import {Values} from './domain/values'
+import {apiSignin} from './infrastructure/api'
 
 export const Acceso : FC = () => {
 
@@ -18,7 +19,7 @@ export const Acceso : FC = () => {
 
     const {...data} = values
 
-          const response = await axios.post('http://localhost:3500/signin', data).catch((err) => {
+          const response = await axios.post(apiSignin, data).catch((err) => {
             if (err && err.response)
             setError(err.response.data.message)
           })

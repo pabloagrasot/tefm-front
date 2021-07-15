@@ -1,5 +1,5 @@
 .options-icon{
-    color:#f5f5f5;
+    color:var(--white-color);
     font-size: 2rem;
     cursor: pointer;
     position: relative;
@@ -10,7 +10,7 @@
 }
 
 .options-icon:hover{
-   color: #1a83ff;
+   color: var(--primary-color);
 }
 
 .modal__options-icon{
@@ -21,21 +21,21 @@
  float: right;
  right: 2rem;
  top: 5.5rem;
- background-color: #333;
+ background-color: var(--menu-color);
  width: 16rem;
- border-radius: 8px;
+ border-radius: var(--border-radius);
  z-index: 1;
  padding: 1rem;
 }
 
 .add-student-icon{
-    color: #f5f5f5;
+    color: var(--white-color);
     font-size: 2rem;
     cursor: pointer
 }
 
 .add-student-icon:hover{
-    color: #1a83ff;
+    color: var(--primary-color);
     font-size: 2rem;
     cursor: pointer
 }
@@ -50,27 +50,27 @@
 }
 
 .students_section-student:hover{
-    background-color: #1a83ff;
+    background-color: var(--primary-color);
 }
 
 .students_section{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 2rem 5rem;
+    margin: var(--margin-m) var(--margin-l);
 }
 
 .students_section > div{
     flex: 30%;
-    border: 1px solid #f5f5f5;
-    border-radius: 8px;
-    margin: 1rem;
+    border: 1px solid var(--white-color);
+    border-radius: var(--border-radius);
+    margin: var(--margin-s);
     max-width: 30%;
 }
 
 .students_section-student > span{
     font-size: 1.5rem;
-    color: #f5f5f5;
+    color: var(--white-color);
 }
 
 .students_section-student > img{
@@ -100,7 +100,7 @@
 
 @media screen and (max-width: 400px) {
     .students_section {
-       margin: 2rem;
+       margin: var(--margin-m);
     }
 }
 

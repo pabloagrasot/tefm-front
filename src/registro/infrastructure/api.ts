@@ -1,0 +1,1 @@
+export const apiSignup = 'https://training-tea-back.herokuapp.com/signup'

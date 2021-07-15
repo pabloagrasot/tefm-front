@@ -4,7 +4,6 @@ import logo from '../img/logo-blanco.png'
 import guardar from '../img/guardar.png'
 import gracias from '../img/gracias.png'
 import './home.css';
-import { Link } from 'react-router-dom';
 
 export const Home : FC = () => {
 
@@ -21,7 +20,7 @@ export const Home : FC = () => {
             <p>El alumno podrá ver en el dispositivo un pictograma en movimiento que le indicará la actividad que se realizará. Para la gestión del tiempo, la herramienta tiene una barra de progreso que se va completando hasta finalizar el ejercicio. Además, para trabajar con diferentes intensidades, durante el ejercicio sonará una melodía que permitirá al alumno mantener un ritmo y frecuencia cardíaca constantes.</p>
           </div>
 
-          <img src={logo} alt="" />
+          <img src={logo} alt="logo" />
 
        </section>
 
@@ -30,14 +29,14 @@ export const Home : FC = () => {
 
        <section className='home-body__box'>
           <div className='box'>
-            <img src={guardar} />
+            <img src={guardar} alt="pictograma guardar"/>
             <div className='box-text'>
               <p>Esta herramienta está pensada para los profesores, por lo que se ofrece un sistema de seguimiento de las actividades.</p>
               <p>Podrás crear una cuenta y registrar a tus alumnos para llevar un control de las actividades de educación física. Almacena los días en los que realizas las actividades, la intensidad y las observaciones para poder ver la evolución de tus alumnos y plantear sesiones individualizadas.</p>
             </div>
           </div>
           <div className='box'>
-            <img src={gracias} />
+            <img src={gracias} alt="pictograma gracias" />
             <div className='box-text'>
               <p>Especial agradecimiento a Raquel, Álvaro, Gema y Tobal.</p>
               <p>Esta aplicación estará en continua mejora y progresivamente se irán añadiendo nuevos ejercicios y funcionalidades. Si eres un profesional del sector de la Educación y tienes cualquier duda o sugerencia, puedes contactar conmigo a través de mi email <a href='mailto:info@training-tea.es'>info@training-tea.es</a></p>

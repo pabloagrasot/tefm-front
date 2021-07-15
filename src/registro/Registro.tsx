@@ -5,6 +5,7 @@ import axios from 'axios';
 import {Values} from './domain/values'
 import {Props} from './domain/props'
 import { validationSchema } from './domain/validationSchema';
+import {apiSignup} from './infrastructure/api'
 
 export const Registro: FC<Props> = ({className, changeClass}) => {
   const [success, setSuccess] = useState(null)
@@ -14,7 +15,7 @@ export const Registro: FC<Props> = ({className, changeClass}) => {
 
     const {confirmPassword, ...data} = values
 
-          const response = await axios.post('http://localhost:3500/signup', data).catch((err) => {
+          const response = await axios.post(apiSignup, data).catch((err) => {
             if (err && err.response)
             setError(err.response.data.message)
             setSuccess(null)

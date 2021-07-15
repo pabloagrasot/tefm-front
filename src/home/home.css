@@ -1,6 +1,6 @@
 .hero__section{
     width: 100%;
-    background-color: #1a83ff;
+    background-color: var(--primary-color);
     z-index: -1;
 }
 
@@ -21,7 +21,7 @@
     color: #f1f1f1;
     align-items: center;
     justify-content: space-evenly;
-    padding: 5rem 5rem 0 5rem;
+    padding: var(--margin-l) var(--margin-l) 0 var(--margin-l);
     flex-wrap: wrap;
 }
 
@@ -31,13 +31,13 @@
 }
 
 .hero > h2 {
-font-family:'bradley_hand_itcregular';
+font-family:var(--logo-font);
 font-size: 5rem;
 flex:1
 }
 
 .home-body__section{
-    margin: 15rem 5rem 0 5rem;
+    margin: 15rem var(--margin-l) 0 var(--margin-l);
     color: #f1f1f1;
     display: flex;
     justify-content: space-around;
@@ -55,7 +55,7 @@ text-align: left;
 }
 
 .tea-font{
-    font-family:'bradley_hand_itcregular';
+    font-family:var(--logo-font);
     font-size: 3rem;
 }
 
@@ -72,7 +72,7 @@ text-align: left;
 
 
 .home-body__box{
-    margin: 5rem;
+    margin: var(--margin-l);
     display: flex;
     justify-content: center;
 }
@@ -87,15 +87,15 @@ text-align: left;
 }
 
 .box-text > p > a{
-    color: #1a83ff;
+    color: var(--primary-color);
 }
 
 .box{
     border: 2px solid #f1f1f1;
-    border-radius: 8px;
-    padding: 2rem;
-    margin: 0 2rem;
-    background-color: #333;
+    border-radius: var(--border-radius);
+    padding: var(--margin-m);
+    margin: 0 var(--margin-m);
+    background-color: var(--menu-color);
     color: #f1f1f1;
 }
 
@@ -111,16 +111,16 @@ text-align: left;
     }
 
     .home-body__section > img{
-    margin-top: 2rem;
+    margin-top: var(--margin-m);
     }
 
     .home-body__box{
-        margin: 5rem;
+        margin: var(--margin-l);
         flex-direction: column;
     }
 
     .box{
-        margin: 1rem 0;
+        margin: var(--margin-s) 0;
     }
 
 }
@@ -128,11 +128,11 @@ text-align: left;
 
 @media (max-width: 900px) {
     .hero{
-        padding: 2rem;
+        padding: var(--margin-m);
     }
 
     .home-body__section{
-        margin: 10rem 2rem 2rem 2rem;
+        margin: 10rem var(--margin-m) var(--margin-m) var(--margin-m);
     }
 
     .hero > img {
@@ -142,12 +142,12 @@ text-align: left;
 
     .hero > h2  {
         font-size: 3rem;
-        margin: 2rem 1rem;
+        margin: var(--margin-m) 1rem;
         flex: auto;
         }
 
     .home-body__box{
-         margin: 2rem;
+         margin: var(--margin-m);
     }
     
 }
@@ -174,7 +174,7 @@ text-align: left;
     }
 
     .home-body__box{
-        margin: 1rem;
+        margin: var(--margin-s);
    }
 }
 

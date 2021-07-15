@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #333;
+  background-color: var(--menu-color);
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -14,23 +14,23 @@
 }
 
 .menu-hamburger, .menu-close {
-  margin-left: 2rem;
+  margin-left: var(--margin-m);
   font-size: 2rem;
   background: none;
-  color :#f5f5f5;
+  color :var(--white-color);
 }
 
 .menu-profile {
-  margin-right: 2rem;
+  margin-right: var(--margin-m);
   font-size: 2rem;
   background: none;
-  color :#f5f5f5;
+  color :var(--white-color);
   z-index: 24;
   cursor: pointer;
 }
 
 .nav-menu {
-  background-color:  #333;
+  background-color:  var(--menu-color);
   width: 250px;
   height: 100vh;
   display: flex;
@@ -59,9 +59,9 @@
   float: right;
   right: 0;
   top: 2rem;
-  background-color: #333;
+  background-color: var(--menu-color);
   width: 20rem;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   z-index: 3;
   padding: 1rem;
  }
@@ -88,7 +88,7 @@
 
 .nav-link a {
   text-decoration: none;
-  color: #f5f5f5;
+  color: var(--white-color);
   font-size: 18px;
   width: 95%;
   height: 100%;
@@ -99,7 +99,7 @@
 }
 
 .nav-link a:hover {
-  background-color: #1a83ff;
+  background-color: var(--primary-color);
 }
 
 .nav-menu-items {
@@ -107,7 +107,7 @@
 }
 
 .navbar-toggle {
-  background-color: #333;
+  background-color: var(--menu-color);
   width: 100%;
   height: 80px;
   display: flex;

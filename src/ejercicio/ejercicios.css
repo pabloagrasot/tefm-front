@@ -12,16 +12,16 @@ pointer-events: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem 5rem;
+    margin: var(--margin-m) var(--margin-l);
     flex-wrap: wrap;
 }
 
 
 .exercise-gif{
     max-width: 20rem;
-    margin-bottom: 2rem;
+    margin-bottom: var(--margin-m);
     border: 0.1rem solid black;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
 
 }
 
@@ -35,22 +35,22 @@ pointer-events: none;
 
 
 .progress-bar{
-    border: 2px solid #1a83ff;
-    border-radius: 8px;
-    color: #f5f5f5;
-    margin-bottom: 2rem;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    color: var(--white-color);
+    margin-bottom: var(--margin-m);
 }
 
 .progress-bar__background{
-    background-color: #1a83ff;
+    background-color: var(--primary-color);
     padding: 2.33rem 0;
 }
 
 .progress-bar__background > span{
     border-radius: 50%;
-    background-color: #f5f5f5;
+    background-color: var(--white-color);
     padding: 1rem;
-    color: #333;
+    color: var(--menu-color);
     font-size: 1.5rem;
     position: absolute;
     top:33.8rem;
@@ -65,26 +65,26 @@ pointer-events: none;
 }
 
 .exercises__options{
-    color: #f5f5f5;
+    color: var(--white-color);
     font-size: 18px;
     padding: 0.3rem 0.7rem;
-    border-radius: 8px;
-    border: 2px solid #1a83ff;
-    background-color: #333;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--primary-color);
+    background-color: var(--menu-color);
     margin: 0.5rem;
     width: 12rem;
 }
 
 
 .exercises__options:focus-visible{
-    border: 2px solid #f5f5f5;
+    border: 2px solid var(--white-color);
     outline: none;
 }
 
 @media (max-width: 1245px) {
 
     .exercise{
-        margin: 2rem;
+        margin: var(--margin-m);
     }
 
     .progress-bar__background > span{

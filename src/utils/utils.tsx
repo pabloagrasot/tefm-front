@@ -17,7 +17,7 @@ export const optionsHeaders = {
     headers: {Authorization: token},
 }
 
-export const getUserName = axios.get('http://localhost:3500/user', optionsHeaders)
+export const getUserName = axios.get('https://training-tea-back.herokuapp.com/user', optionsHeaders)
     .then( (response:AxiosResponse )=> {
         const user = response.data.user.userName
     })

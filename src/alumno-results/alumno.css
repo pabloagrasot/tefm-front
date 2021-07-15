@@ -14,8 +14,8 @@
   width: 7rem;
   height: 7rem;
   border-radius: 100%;
-  border: 3px solid #1a83ff;
-  background-color: #f5f5f5;
+  border: 3px solid var(--primary-color);
+  background-color: var(--white-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +47,7 @@
     font-weight: bold;
   }
 .next-add-exercise:hover{
-     color: #1a83ff;
+     color: var(--primary-color);
      text-decoration: none;
      cursor: pointer;
   }
@@ -74,10 +74,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 2rem;
-    background-color: #f5f5f5;
-    color: #333;
-    border-radius: 8px;
+    margin: 0 var(--margin-m);
+    background-color: var(--white-color);
+    color: var(--menu-color);
+    border-radius: var(--border-radius);
 }
 
 .exercise__section-titles > h3{
@@ -92,22 +92,22 @@
 }
 
 .exercise__section-order-icon:hover{
-  color: #1a83ff;
+  color: var(--primary-color);
 } 
   
 .exercise__section-exercise{
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin: 1rem 2rem;
-    border: 1px solid #f5f5f5;
-    border-radius: 8px;
+    margin: var(--margin-s) var(--margin-m);
+    border: 1px solid var(--white-color);
+    border-radius: var(--border-radius);
 }
 
 .exercise__section-exercise-data{
-    color: #f5f5f5;
+    color: var(--white-color);
     text-align: left;
-    margin: 1rem 
+    margin: var(--margin-s) 
 }
 
 .exercise__section-exercise-data > h3 {
@@ -115,9 +115,9 @@
   text-transform: uppercase;
 }
 .exercise__section-exercise-date{
-    color: #f5f5f5;
+    color: var(--white-color);
     text-align: left;
-    margin: 1rem 
+    margin: var(--margin-s) 
 }
 
 .icon-delete-exercise{
@@ -126,7 +126,7 @@
   right: 0;
   font-size: 1.5rem;
   min-width: 1.5rem;
-  color: #f5f5f5;
+  color: var(--white-color);
   cursor: pointer;
   width: 50%;
   margin: -12px 5.5rem;
@@ -194,15 +194,15 @@
     margin: 0 1rem;
   }
     .exercise__section-exercise {
-        margin: 1rem;
+        margin: var(--margin-s);
     }
 
     .exercise__section-exercise-data{
-        margin: 1rem 0.5rem
+        margin: var(--margin-s) 0.5rem
     }
 
     .exercise__section-exercise-date{
-        margin: 1rem 0.5rem
+        margin: var(--margin-s) 0.5rem
     }
     .icon-delete-exercise{
       margin: -12px 2.5rem;

@@ -7,7 +7,7 @@ export const Hero : FC = () => {
   return (
       <section className='hero__section'>
         <div className='hero'>
-          <img src={hero} />
+          <img src={hero} alt="app movil"/>
           <h2>La herramienta complementaria para tu circuito de Educación Física por estaciones</h2>
         </div> 
       </section>
