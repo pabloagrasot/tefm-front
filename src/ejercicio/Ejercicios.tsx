@@ -1,31 +1,48 @@
-import { FC, useEffect, useState, ChangeEvent, lazy, Suspense} from 'react'
+import { FC, useEffect, useState, ChangeEvent} from 'react'
 import bici from '../img/bici.gif'
 import correr from '../img/correr.gif'
 import biciPng from '../img/bici.png'
 import correrPng from '../img/correr.png'
 import deporte from '../img/deporte.png'
-import noDeporte from '../img/no-deporte.png'
+import bajo from '../audio/bajo.mp3'
+import medio from '../audio/medio.mp3'
+import alto from '../audio/alto.mp3'
 import './ejercicios.css';
+import { ExerciseSound } from './Sound'
+import { ExerciseGif } from './ExerciseGif'
+import { ProgressBar } from './ProgressBar'
+
 
 export const Ejercicios: FC = () => {
 
   const [timerOn, setTimerOn] = useState(false)
+  const stopExercise = () => setTimerOn(false)
+
+
+
   const [seconds, setSeconds] = useState(30);
   const [watch, setWatch] = useState(0);
-  const [percentage, setPercentage] = useState(0);
+
   const [pointer, setPointer] = useState(true)
   const [gif, setGif] = useState(deporte)
   const [exercise , setExercise] = useState ('')
-
-  const [pointerButton, setPointerButton] = useState(0)
- 
-
+  const [sound, setSound] = useState ('')
 
   const selectSeconds = (e: ChangeEvent<any>) => {
-    let secondsSelected = e.target.value
+    const secondsSelected = e.target.value
     setSeconds(secondsSelected)
     setWatch(100/secondsSelected)
-    setPointerButton(1)
+  }
+
+  const selectIntensity = (e: ChangeEvent<any>) => {
+    const intensitySelected = e.target.value
+    if(intensitySelected === "low"){
+      setSound(bajo)
+    }if(intensitySelected === "mid"){
+      setSound(medio)
+    }if(intensitySelected === "high"){
+      setSound(alto)
+    }
   }
 
   const selectExercise = (e: ChangeEvent<any>) => {
@@ -37,42 +54,34 @@ export const Ejercicios: FC = () => {
       setExercise(bici)
       setGif(biciPng)
     }
-    setPointerButton(2)
   }
 
+ 
+
   useEffect(() => {
-    let interval:any
-    if (timerOn && seconds > 0){
-      interval = setInterval(() => {
-        setSeconds( seconds => seconds - 1);
-        setPercentage(percentage + watch)
+   
+    if (timerOn){
         setGif(exercise)
         setPointer(false)
-      }, 1000)
-    }else if (seconds === 0){
-      clearInterval(interval)
-      setGif(noDeporte)
-      
+
+    } else if( timerOn === false){
+    
     }
-    return () => clearInterval(interval)
-  }, [timerOn, percentage, seconds, watch, exercise])
+ 
+  }, [timerOn, stopExercise, watch, seconds, selectSeconds])
 
   
-  const End = lazy (
-  () => import ('../ejercicio-terminado/ejercicio-terminado')
- )
 
-  return (
+
+    return (
     <>
       <h1>Ejercicios</h1>
 
       <section className="exercise">
         <div>
-          <img src={gif} alt="" className="exercise-gif" />
+          <ExerciseGif gif={gif}/>
 
-          <div className='progress-bar'>
-                <div className='progress-bar__background' style={{width: `${percentage}%`}}><span>{seconds}</span></div>
-          </div>
+          <ProgressBar secondsSelected={seconds} watch={watch} timerOn={timerOn} stopExercise={stopExercise} />
 
 
           <div className="exercise__configuration">
@@ -93,7 +102,7 @@ export const Ejercicios: FC = () => {
               <option value="300">5 minutos</option>
             </select>
 
-            <select name="intensity" id="intensity" required className={`${pointer ? "pointer" : "pointer none"} exercises__options`}>
+            <select name="intensity" id="intensity" required className={`${pointer ? "pointer" : "pointer none"} exercises__options`} onChange={(e) => selectIntensity(e)}>
               <option className="seconds__option">Intensidad</option>
               <option value="low">Baja</option>
               <option value="mid">Media</option>
@@ -117,10 +126,10 @@ export const Ejercicios: FC = () => {
 
         </div>
 
+        {timerOn === true && <ExerciseSound sound={sound} timerOn={timerOn} />}
+
       </section>
-      <Suspense fallback={null}>
-      {(seconds === 0) && <End />}
-      </Suspense>
+     
     </>
   );
 }
