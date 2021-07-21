@@ -16,6 +16,7 @@ import { ProgressBar } from './ProgressBar'
 export const Ejercicios: FC = () => {
 
   const [timerOn, setTimerOn] = useState(false)
+  const [playExercise, setPlayExercise] = useState(false)
   const stopExercise = () => setTimerOn(false)
 
 
@@ -68,9 +69,12 @@ export const Ejercicios: FC = () => {
     
     }
  
-  }, [timerOn, stopExercise, watch, seconds, selectSeconds])
+  }, [timerOn, watch, seconds, exercise])
 
-  
+  const play = () => {
+    setTimerOn(true)
+    setPlayExercise(true)
+  }
 
 
     return (
@@ -121,12 +125,12 @@ export const Ejercicios: FC = () => {
               <option value="bike">Montar en Bici</option>
             </select>
 
-            <button onClick={() => setTimerOn(true)} className={"primary-button"}>Empezar</button>
+            <button onClick={() => play()} className={"primary-button"}>Empezar</button>
           </div>
 
         </div>
 
-        {timerOn === true && <ExerciseSound sound={sound} timerOn={timerOn} />}
+       { playExercise && <ExerciseSound sound={sound} timerOn={timerOn} />}
 
       </section>
      

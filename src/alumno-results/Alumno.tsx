@@ -13,7 +13,7 @@ import './alumno.css';
 
 export const Alumno: FC<Props> = ( {className, changeClass, alumnoName, reloadStudents}) => {
 
-const [getAlumno, setGetAlumno] = useState(alumnoName)
+const [getAlumno] = useState(alumnoName)
 const [student, setStudent] = useState<IStudent>()
 const [success, setSuccess] = useState(null)
 const [error, setError] = useState(null)
