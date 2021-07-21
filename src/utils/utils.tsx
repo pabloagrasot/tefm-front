@@ -19,7 +19,7 @@ export const optionsHeaders = {
 
 export const getUserName = axios.get('https://training-tea-back.herokuapp.com/user', optionsHeaders)
     .then( (response:AxiosResponse )=> {
-        const user = response.data.user.userName
+      response.data.user.userName
     })
     .catch((err) => {
         if (err && err.response)
