@@ -79,6 +79,10 @@
     .form__intro{
         margin: 1rem 0;
     }
+
+    .form-input{
+        margin: 0.5rem;
+    }
     
 
   }

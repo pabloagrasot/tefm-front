@@ -132,9 +132,18 @@ code {
 
   .modal.active{
       padding: var(--margin-l) 1rem;
+      width: 100%; 
   }
 
   .modal__form{
       width: 100%;
+  }
+}
+
+
+
+@media (max-width: 400px) {
+  .modal__form{
+      width: 85%;
   }
 }
