@@ -41,6 +41,7 @@ export const Acceso : FC = () => {
 
   return (
     <>
+    <Registro changeClass={showModal} className={modal ? 'modal active' : 'modal'}></Registro>
     <section className="form__section">
       <div className="form__intro">
         <img src={Logo} className='menu-logo' alt='logo' />
@@ -69,7 +70,7 @@ export const Acceso : FC = () => {
          </form>
      
     </section>
-    <Registro changeClass={showModal} className={modal ? 'modal active' : 'modal'}></Registro>
+    
     </>
   )
 }
