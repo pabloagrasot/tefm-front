@@ -19,8 +19,6 @@ export const Ejercicios: FC = () => {
   const [playExercise, setPlayExercise] = useState(false)
   const stopExercise = () => setTimerOn(false)
 
-
-
   const [seconds, setSeconds] = useState(30);
   const [watch, setWatch] = useState(0);
 
@@ -64,9 +62,6 @@ export const Ejercicios: FC = () => {
     if (timerOn){
         setGif(exercise)
         setPointer(false)
-
-    } else if( timerOn === false){
-    
     }
  
   }, [timerOn, watch, seconds, exercise])
