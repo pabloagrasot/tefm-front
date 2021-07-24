@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react'
-import {Link} from 'react-router-dom'
 import './menu.css';
 import Logo from '../img/logo.png';
 import Name from '../img/name.png'
