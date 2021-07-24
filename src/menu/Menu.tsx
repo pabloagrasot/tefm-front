@@ -18,7 +18,7 @@ export const Menu: FC = () => {
 
     <header className='header'>
       <div className='navbar'>
-      <a href='#' className='menu-hamburger'>
+      <a href='/#' className='menu-hamburger'>
         <FaIcons.FaBars onClick={showMenu} title="hamburger"/>
       </a>
 
@@ -42,7 +42,7 @@ export const Menu: FC = () => {
           </li>
 
           <li className='nav-link' onClick={logOut}>
-            <a href='#'>
+            <a href='/#'>
               <Githubicons.GoSignOut/>
               <span className='nav-link__title'>Cerrar sesión</span>
             </a>
@@ -56,7 +56,7 @@ export const Menu: FC = () => {
         <nav title='nav' className={menu ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showMenu}>
             <li className='navbar-toggle'>
-              <a href='#' className='menu-close'>
+              <a href='/#' className='menu-close'>
                 <FaIcons.FaTimes />
               </a>
             </li>
