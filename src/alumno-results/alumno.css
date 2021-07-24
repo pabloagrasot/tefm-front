@@ -37,8 +37,22 @@
    width: auto;
 }
 
+.add-excercise{
+  width: 80%;
+}
+
 .add-excercise > .modal__form{
     width: auto;
+}
+
+.add-exercise__select > option:checked {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.add-exercise__select > option:hover {
+  background-color: var(--white-color);
+  color: var(--primary-color);
 }
 
 .next-add-exercise{

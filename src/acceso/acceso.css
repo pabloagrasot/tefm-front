@@ -3,7 +3,7 @@
     align-items: center;
     flex-wrap: wrap-reverse;
     color: var(--white-color);
-    margin: var(--margin-l)
+    margin: var(--margin-l);
 }
 
 .form__intro{
@@ -74,6 +74,10 @@
     .form{
         margin: 0;
         padding: 1rem
+    }
+
+    .form > div > h1{
+        margin: var(--margin-s) 0
     }
 
     .form__intro{

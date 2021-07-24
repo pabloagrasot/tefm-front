@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, lazy, Suspense} from 'react'
+import React, { FC, useState, useEffect, lazy, Suspense} from 'react'
 import {PropsProgressBar} from './domain/props'
 
 

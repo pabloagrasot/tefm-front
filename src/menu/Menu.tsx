@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import React, { FC, useState } from 'react'
 import {Link} from 'react-router-dom'
 import './menu.css';
 import Logo from '../img/logo.png';
@@ -19,13 +19,13 @@ export const Menu: FC = () => {
 
     <header className='header'>
       <div className='navbar'>
-      <Link to='#' className='menu-hamburger'>
-        <FaIcons.FaBars onClick={showMenu}/>
-      </Link>
+      <a href='#' className='menu-hamburger'>
+        <FaIcons.FaBars onClick={showMenu} title="hamburger"/>
+      </a>
 
-      <Link to ='/'>
+      <a href ='/'>
         <img src={Name} alt="app training tea" className="navbar-log"/>
-      </Link>
+      </a>
 
      
       <FaIcons.FaUserAlt onClick={showMlogOptions} className='menu-profile'/>
@@ -36,17 +36,17 @@ export const Menu: FC = () => {
 
 
           <li className='nav-link'>
-            <Link to ='/alumnos/'>
+            <a href='/alumnos/'>
               <FaIcons.FaUserFriends/>
               <span className='nav-link__title'>Mis alumnos</span>
-            </Link>
+            </a>
           </li>
 
           <li className='nav-link' onClick={logOut}>
-            <Link to ='#'>
+            <a href='#'>
               <Githubicons.GoSignOut/>
               <span className='nav-link__title'>Cerrar sesión</span>
-            </Link>
+            </a>
           </li>
 
       </ul> }
@@ -54,22 +54,22 @@ export const Menu: FC = () => {
 
       </div>
 
-        <nav className={menu ? 'nav-menu active' : 'nav-menu'}>
+        <nav title='nav' className={menu ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showMenu}>
             <li className='navbar-toggle'>
-              <Link to='#' className='menu-close'>
+              <a href='#' className='menu-close'>
                 <FaIcons.FaTimes />
-              </Link>
+              </a>
             </li>
             
         
             {menuLinks.map((link, index) => {
               return (
                 <li key={index} className={link.className}>
-                  <Link to={link.path}>
+                  <a href={link.path}>
                     {<link.icon/>}
                     <span className="nav-link__title">{link.title}</span>
-                  </Link>
+                  </a>
                 </li>
               );
             })}

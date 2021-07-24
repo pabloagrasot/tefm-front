@@ -53,7 +53,7 @@ export const Exercises: FC<PropsExercises> = ({showNewExercise, getAlumno}) => {
             
                <div className='exercise__section-exercise-data'>
                     <h3>{exercise.exName}</h3>
-                    <p>Dificultad: {exercise.dificulty}</p>
+                    <p>Intensidad: {exercise.dificulty}</p>
                     <p>Tiempo: {exercise.time}</p>
                     <p>Observaciones: {exercise.observations}</p>
                 </div>

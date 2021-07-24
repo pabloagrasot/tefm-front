@@ -37,7 +37,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, getAlumno}) => {
           }
   }
 
-  const formik = useFormik({initialValues: { exName:'', dificulty:'', time:'', observations:''}, 
+  const formik = useFormik({initialValues: { exName:'', intensity:'', time:'', observations:''}, 
     validateOnBlur:true,
     onSubmit,
     validationSchema: validationSchema
@@ -59,22 +59,40 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, getAlumno}) => {
 
             {(next === 1) && <div className='form-input'>
               <p>Nombre del Ejercicio</p>
-              <input id="exName" placeholder='Nombre del ejercicio' className='input' type='text' name='exName' value={formik.values.exName} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+              <select id="exName" placeholder='Nombre del ejercicio' className='input add-exercise__select' name='exName' value={formik.values.exName} onChange={formik.handleChange} onBlur={formik.handleBlur}>
+                <option className="seconds__option">Ejercicio</option>
+                <option value="Correr">Correr</option>
+                <option value="Montar en Bici">Montar en Bici</option>
+              </select>
               <div className='input__error'>{formik.touched.exName && formik.errors.exName ? formik.errors.exName: ''}</div>
               { formik.touched.exName && !formik.errors.exName && <FaIcons.FaArrowRight onClick={() => setNext(2)} className='next-add-exercise'/>}
             </div>}
 
             { (next === 2) && <div className='form-input'>
-              <p>Dificultad</p>
-              <input id="dificulty" placeholder='Dificultad' className='input' type='text' name='dificulty' value={formik.values.dificulty} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
-              <div className='input__error'>{formik.touched.dificulty && formik.errors.dificulty ? formik.errors.dificulty: ''}</div>
+              <p>Intensidad</p>
+              <select id="intensity" placeholder='Intensidad' className='input add-exercise__select' name='intensity' value={formik.values.intensity} onChange={formik.handleChange} onBlur={formik.handleBlur}>
+                <option className="seconds__option">Intensidad</option>
+                <option value="Baja">Baja</option>
+                <option value="Media">Media</option>
+                <option value="Alta">Alta</option>
+              </select>
+              <div className='input__error'>{formik.touched.intensity && formik.errors.intensity ? formik.errors.intensity: ''}</div>
               <FaIcons.FaArrowLeft onClick={() => setNext(1)} className='next-add-exercise'/>
-              {formik.touched.dificulty && !formik.errors.dificulty && <FaIcons.FaArrowRight onClick={() => setNext(3)} className='next-add-exercise'/>}
+              {formik.touched.intensity && !formik.errors.intensity && <FaIcons.FaArrowRight onClick={() => setNext(3)} className='next-add-exercise'/>}
             </div>}
 
             {(next === 3) && <div className='form-input'>
               <p>Tiempo</p>
-              <input id="time" placeholder='Tiempo' className='input' type='text' name='time' value={formik.values.time} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+              <select id="time" placeholder='Tiempo' className='input add-exercise__select' name='time' value={formik.values.time} onChange={formik.handleChange} onBlur={formik.handleBlur}>
+                <option className="seconds__option">Tiempo</option>
+                <option value="30 segundos">30 segundos</option>
+                <option value="1 minuto">1 minuto</option>
+                <option value="1.5 minutos">1.5 minutos</option>
+                <option value="2 minutos">2 minutos</option>
+                <option value="2.5 minutos">2.5 minutos</option>
+                <option value="3 minutos">3 minutos</option>
+                <option value="5 minutos">5 minutos</option>
+              </select>
               <div className='input__error'>{formik.touched.time && formik.errors.time ? formik.errors.time: ''}</div>
               <FaIcons.FaArrowLeft onClick={() => setNext(2)} className='next-add-exercise'/>
               {formik.touched.time && !formik.errors.time && <FaIcons.FaArrowRight onClick={() => setNext(4)} className='next-add-exercise'/>}
