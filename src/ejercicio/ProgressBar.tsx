@@ -39,7 +39,7 @@ const End = lazy (
   return (
     <>
     <div className='progress-bar'>
-        <div className='progress-bar__background' style={{width: `${percentage}%`}}><span>{seconds}</span></div>
+        <div data-testid="seconds" className='progress-bar__background' style={{width: `${percentage}%`}}><span>{seconds}</span></div>
     </div>
 
     <Suspense fallback={null}>

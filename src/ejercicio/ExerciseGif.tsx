@@ -9,7 +9,7 @@ export const ExerciseGif: FC<PropsGif> = ({gif}) =>{
 
 
   return (
-    <img src={gif} alt="" className="exercise-gif" />
+    <img src={gif} alt="exercise-gif" className="exercise-gif" />
   )
 }
 

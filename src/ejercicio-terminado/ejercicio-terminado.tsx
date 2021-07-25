@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import noDeporte from '../img/no-deporte.png'
 import './ejercicio-terminado.css';
 
@@ -23,7 +23,7 @@ const End: FC = () =>{
             </div>
 
           <div className="exercise-end_buttons">
-           <button className='secundary-button' onClick={() => window.location.reload()}>Empezar</button>
+           <button data-testid="reload" className='secundary-button' onClick={() => window.location.reload()}>Empezar</button>
            <button className='primary-button' onClick={() => window.location.href ='/alumnos/' }>Guardar resultados</button>
           </div>
            
