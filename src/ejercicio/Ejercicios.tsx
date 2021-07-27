@@ -87,7 +87,7 @@ export const Ejercicios: FC = () => {
             <select
               name="seconds"
               id="seconds"
-              data-testid="seconds"
+              data-testid="seconds-main"
               className={`${pointer ? "pointer" : "pointer none"} exercises__options`}
               required
               onChange={selectSeconds}
@@ -102,7 +102,7 @@ export const Ejercicios: FC = () => {
               <option value="300">5 minutos</option>
             </select>
 
-            <select name="intensity" id="intensity" data-testid="intensity" required className={`${pointer ? "pointer" : "pointer none"} exercises__options`} onChange={(e) => selectIntensity(e)}>
+            <select name="intensity" id="intensity" data-testid="intensity-main" required className={`${pointer ? "pointer" : "pointer none"} exercises__options`} onChange={(e) => selectIntensity(e)}>
               <option className="seconds__option">Intensidad</option>
               <option value="low">Baja</option>
               <option value="mid">Media</option>
@@ -112,7 +112,7 @@ export const Ejercicios: FC = () => {
             <select
               name="exercise"
               id="exercise"
-              data-testid="exercise"
+              data-testid="exercise-main"
               required
               className={`${pointer ? "pointer" : "pointer none"} exercises__options`}
               onChange={(e) => selectExercise(e)}

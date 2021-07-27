@@ -1,6 +1,8 @@
 import axios, {AxiosResponse} from 'axios'
 
 
+
+
 export const token = sessionStorage.getItem('token')
 
 export const deleteToken = () => {
@@ -17,7 +19,7 @@ export const optionsHeaders = {
     headers: {Authorization: token},
 }
 
-export const getUserName = axios.get('https://training-tea-back.herokuapp.com/user', optionsHeaders)
+export const getUserName = axios.get<AxiosResponse<string>>('https://training-tea-back.herokuapp.com/user', optionsHeaders) 
     .then( (response:AxiosResponse )=> {
         const user = response.data.user.userName
         console.log(user)

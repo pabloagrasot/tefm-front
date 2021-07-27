@@ -24,18 +24,23 @@ test("Checking Function map", () => {
 });
 
 
-test("Menú onclic", () => {
-  const handleClick = jest.fn()
+test("Menú visible onClic", () => {
   render(
     <Router>
-      <Menu>
-        <Link to='#'>
-          <svg onClick={handleClick}> </svg>
-        </Link>
-      </Menu>
+      <Menu/>
     </Router>)
   const menu = screen.getByTitle(/hamburger/i)
-  console.log(menu)
   fireEvent.click(menu)
-  expect(handleClick).toHaveBeenCalledTimes(1)
+  const navBar = screen.getByTestId('nav')
+  expect(navBar).toHaveClass('nav-menu active') 
+});
+
+
+test("Menú not visiblr onClic", () => {
+  render(
+    <Router>
+      <Menu/>
+    </Router>)
+  const navBar = screen.getByTestId('nav')
+  expect(navBar).not.toHaveClass('nav-menu active') 
 });

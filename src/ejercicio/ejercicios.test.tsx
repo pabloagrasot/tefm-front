@@ -12,24 +12,15 @@ test('renders h1', () => {
 
 test("select seconds", () => {
   render(<Ejercicios />);
-  fireEvent.change(screen.getByTestId("seconds"), {
+  fireEvent.change(screen.getByTestId("seconds-main"), {
     target: { value: "30" },
   });
     expect(screen.getByText("30")).toBeInTheDocument();
 });
 
-test("select seconds mock not work with another selector", () => {
-  render(<Ejercicios />);
-  fireEvent.change(screen.getByTestId("seconds"), {
-    target: { value: "correr" },
-  });
-    expect(screen.getByText("correr")).toBeInTheDocument();
-});
-
-
 test("select intensity", () => {
   render(<Ejercicios />);
-  fireEvent.change(screen.getByTestId("intensity"), {
+  fireEvent.change(screen.getByTestId("intensity-main"), {
     target: { value: "mid" },
   });
     expect(screen.getByText("Media")).toBeInTheDocument();
@@ -38,7 +29,7 @@ test("select intensity", () => {
 
 test("select exercise", () => {
   render(<Ejercicios />);
-  fireEvent.change(screen.getByTestId("exercise"), {
+  fireEvent.change(screen.getByTestId("exercise-main"), {
     target: { value: "run" },
   });
     expect(screen.getByText("Correr")).toBeInTheDocument();

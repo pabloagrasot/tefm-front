@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, } from 'react'
+import React, { FC, useEffect, useState, } from 'react'
 import {Link} from 'react-router-dom'
 import {AddAlumnos} from './Add-alumnos'
 import { Alumno } from '../alumno-results/Alumno';

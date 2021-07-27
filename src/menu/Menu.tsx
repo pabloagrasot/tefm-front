@@ -54,7 +54,7 @@ export const Menu: FC = () => {
 
       </div>
 
-        <nav title='nav' className={menu ? 'nav-menu active' : 'nav-menu'}>
+        <nav data-testid='nav' className={menu ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showMenu}>
             <li className='navbar-toggle'>
               <Link to='#' className='menu-close'>

@@ -1,4 +1,4 @@
-import { FC, useState} from 'react'
+import React, { FC, useState} from 'react'
 import { useFormik } from 'formik';
 import * as FaIcons from "react-icons/fa";
 import axios from 'axios';
@@ -36,7 +36,7 @@ export const Registro: FC<Props> = ({className, changeClass}) => {
   })
 
   return (
-    <section className={className}>
+    <section data-testid='registro-modal' className={className}>
 
          <form className='modal__form' onSubmit={formik.handleSubmit} >
 
@@ -54,36 +54,36 @@ export const Registro: FC<Props> = ({className, changeClass}) => {
             </div>
 
             <div className='form-input'>
-              <input id="name" placeholder='Nombre' className='input' type='text' name='name' value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+              <input data-testid='name' id="name" placeholder='Nombre' className='input' type='text' name='name' value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.name && formik.errors.name ? formik.errors.name: ''}</div>
             </div>
 
             <div className='form-input'>
-              <input id='lastName' placeholder='Apellido' className='input' type='text' name='lastName' value={formik.values.lastName} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+              <input  data-testid='lastName' id='lastName' placeholder='Apellido' className='input' type='text' name='lastName' value={formik.values.lastName} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.lastName && formik.errors.lastName ? formik.errors.lastName: ''}</div>
             </div>
 
             <div className='form-input'>
-              <input id='email' placeholder='Correo electrónico' className='input' type='email' name='email' value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+              <input data-testid='email' id='email' placeholder='Correo electrónico' className='input' type='email' name='email' value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.email && formik.errors.email ? formik.errors.email: ''}</div>
             </div>
 
             <div className='form-input'>
-              <input id='userName' placeholder='Nombre de Usuario' className='input' type='text' name='userName' value={formik.values.userName} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+              <input data-testid='userName' id='userName' placeholder='Nombre de Usuario' className='input' type='text' name='userName' value={formik.values.userName} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.userName && formik.errors.userName ? formik.errors.userName: ''}</div>
             </div>
 
             <div className='form-input'>
-              <input id='password' placeholder='Contraseña' className='input' type='password' name='password' value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+              <input data-testid='password' id='password' placeholder='Contraseña' className='input' type='password' name='password' value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.password && formik.errors.password ? formik.errors.password: ''}</div>
            </div>
 
            <div className='form-input'>
-              <input id='confirmPassword' placeholder='Confirmar contraseña' className='input' type='password' name='confirmPassword' value={formik.values.confirmPassword} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+              <input data-testid='confirmPassword' id='confirmPassword' placeholder='Confirmar contraseña' className='input' type='password' name='confirmPassword' value={formik.values.confirmPassword} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.confirmPassword && formik.errors.confirmPassword ? formik.errors.confirmPassword: ''}</div>
            </div>
 
-           <button className='primary-button' type='submit'>Registrarme</button>
+           <button className='primary-button' type='submit'>Regístrarme</button>
            
          </form>
       

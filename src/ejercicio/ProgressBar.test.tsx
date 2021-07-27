@@ -15,6 +15,22 @@ test('Props seconds progress bar', () => {
 });
 
 
+
+test('Interval change progress bar', () => {
+  const secondsSelected = 30
+  const watch = 100/secondsSelected
+  const timerOn = true
+  const stopExercise = () => {}
+  jest.useFakeTimers()
+  act(() => {
+  render(<ProgressBar secondsSelected={secondsSelected}  watch={watch} timerOn={timerOn} stopExercise={stopExercise}  />);
+  const secondsCounter = screen.getByTestId('seconds')
+  jest.advanceTimersByTime(1000);  
+  expect(secondsCounter).toHaveTextContent('29');
+  expect(secondsCounter).toHaveAttribute('style', 'width: 3.3333333333333335%;')
+  })
+})
+
 test('Percentaje progress bar 0', () => {
   const secondsSelected = 30
   const watch = 100/secondsSelected
@@ -27,21 +43,6 @@ test('Percentaje progress bar 0', () => {
 });
 
 
-test('Interval change progress bar', () => {
-  const secondsSelected = 30
-  const watch = 100/secondsSelected
-  const timerOn = true
-  const stopExercise = () => {}
-  jest.useFakeTimers()
-
-  act(() => {
-  render(<ProgressBar secondsSelected={secondsSelected}  watch={watch} timerOn={timerOn} stopExercise={stopExercise}  />);
-  const secondsCounter = screen.getByTestId('seconds')
-  jest.advanceTimersByTime(1000);  
-  expect(secondsCounter).toHaveTextContent('29');
-  expect(secondsCounter).toHaveAttribute('style', 'width: 3.3333333333333335%;')
-  })
-})
 
 
 

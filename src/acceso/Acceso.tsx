@@ -1,4 +1,4 @@
-import { FC, useState,} from 'react'
+import React, { FC, useState,} from 'react'
 import { useFormik } from 'formik';
 import './acceso.css';
 import Logo from '../img/logo-blanco.png';
@@ -46,7 +46,7 @@ export const Acceso : FC = () => {
       <div className="form__intro">
         <img src={Logo} className='menu-logo' alt='logo' />
         <p>Accede a tu cuenta para llevar el control de tus sesiones de educación física y poder llevar un seguimieto de la evolución de tus alumnos.</p>
-        <button onClick={showModal} className="secundary-button">Regístrate</button>
+        <button data-testid='secundary-button' onClick={showModal} className="secundary-button">Regístrate</button>
       </div>
       
          <form className="form" onSubmit={formik.handleSubmit}>
@@ -55,12 +55,12 @@ export const Acceso : FC = () => {
             </div>
 
             <div className='form-input'>
-              <input id='userName' placeholder='Nombre de Usuario' className='input' type='text' name='userName' value={formik.values.userName} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+              <input data-testid='userName-log' id='userName' placeholder='Nombre de Usuario' className='input' type='text' name='userName' value={formik.values.userName} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.userName && formik.errors.userName ? formik.errors.userName: ''}</div>
             </div>
 
             <div className='form-input'>
-              <input id='password' placeholder='Contraseña' className='input' type='password' name='password' value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+              <input data-testid='password-log' id='password' placeholder='Contraseña' className='input' type='password' name='password' value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               <div className='input__error'>{formik.touched.password && formik.errors.password ? formik.errors.password: ''}</div>
            </div>
 
