@@ -36,12 +36,13 @@ export const Alumnos: FC = () => {
 
 
   useEffect(() => {
-    axios.get<IStudent[]>(alumnosApi, optionsHeaders)
+    if (typeof(Storage) !== 'undefined') {
+      axios.get<IStudent[]>(alumnosApi, optionsHeaders)
       .then((response:AxiosResponse) => {
         setLogged(true)
         setStudents(response.data.data)
       })
-      
+    }   
   }, [renderAlumnos])
 
   function getAlumno(alumnoName:string){

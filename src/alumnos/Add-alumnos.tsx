@@ -37,6 +37,7 @@ export const AddAlumnos: FC<Props> = ({className, changeClass, reloadStudents}) 
   function close(){
     changeClass()
     reloadStudents()
+    setSuccess(null)
   }
 
   const formik = useFormik({initialValues: { alumnoName: ''}, 
