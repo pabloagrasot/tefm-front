@@ -4,7 +4,7 @@ export interface IValues {
 
 export interface IExercisesValues{
   exName:string,
-  intensity:string,
+  dificulty:string,
   time:string,
   observations:string,
 }

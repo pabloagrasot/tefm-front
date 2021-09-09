@@ -8,7 +8,9 @@ interface IEjercicios {
   observations:string,
 }
 
-export const ejercicios: IEjercicios[] = [
+const URI = '/test'
+
+const ejercicios: IEjercicios[] = [
   {
     "_id": "60e1a303dbc02550b03449bc",
     "exName": "Jugar",
@@ -24,3 +26,9 @@ export const ejercicios: IEjercicios[] = [
     "observations": "bien"
     }
   ]
+
+  export const mockApi = async () => {
+    const { data } = await axios.get<IEjercicios>(URI)
+  }
+
+  
