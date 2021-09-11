@@ -66,7 +66,7 @@ export const Alumnos: FC = () => {
       { logOptions && logged && <ul className='modal__options-icon'>  
 
           <li className='nav-link' onClick={showModal}>
-          <Link to='#'>
+          <Link onClick={showMlogOptions} to='#'>
               <BoostrapIcons.BsPlusCircleFill/>
               <span className='nav-link__title'>Añadir alumno</span>
               </Link>

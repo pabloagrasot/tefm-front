@@ -1,8 +1,10 @@
 import React, { FC, useEffect, useState, ChangeEvent} from 'react'
 import bici from '../img/bici.gif'
 import correr from '../img/correr.gif'
+import cinta from '../img/cinta.gif'
 import biciPng from '../img/bici.png'
 import correrPng from '../img/correr.png'
+import cintaPng from '../img/cinta.png'
 import deporte from '../img/deporte.png'
 import bajo from '../audio/bajo.mp3'
 import medio from '../audio/medio.mp3'
@@ -18,6 +20,10 @@ export const Ejercicios: FC = () => {
   const [timerOn, setTimerOn] = useState(false)
   const [playExercise, setPlayExercise] = useState(false)
   const stopExercise = () => setTimerOn(false)
+  const propSetTimerOn = () => setTimerOn(true)
+  const propSetTimerOff = () => setTimerOn(false)
+  const propSetPlayExercise = () => setPlayExercise(true)
+  const propSetStopExercise = () => setPlayExercise(false)
 
   const [seconds, setSeconds] = useState(30);
   const [watch, setWatch] = useState(0);
@@ -26,6 +32,7 @@ export const Ejercicios: FC = () => {
   const [gif, setGif] = useState(deporte)
   const [exercise , setExercise] = useState ('')
   const [sound, setSound] = useState ('')
+
 
   const selectSeconds = (e: ChangeEvent<any>) => {
     const secondsSelected = e.target.value
@@ -49,9 +56,13 @@ export const Ejercicios: FC = () => {
     if(exerciseSelected === "run"){
       setExercise(correr)
       setGif(correrPng)
-    } else {
+    } if(exerciseSelected === "bike") {
       setExercise(bici)
       setGif(biciPng)
+      
+    } if (exerciseSelected === "treadmill"){
+      setExercise(cinta)
+      setGif(cintaPng)
     }
   }
 
@@ -65,12 +76,6 @@ export const Ejercicios: FC = () => {
     }
  
   }, [timerOn, watch, seconds, exercise])
-
-  const play = () => {
-    setTimerOn(true)
-    setPlayExercise(true)
-  }
-
 
     return (
     <>
@@ -120,14 +125,17 @@ export const Ejercicios: FC = () => {
               <option className="seconds__option">Ejercicio</option>
               <option value="run">Correr</option>
               <option value="bike">Montar en Bici</option>
+              <option value="treadmill">Correr en Cinta</option>
             </select>
 
-            <button onClick={() => play()} className={"primary-button"}>Empezar</button>
+          
+            { exercise && <ExerciseSound sound={sound} timerOn={timerOn} propSetTimerOn={propSetTimerOn} propSetTimerOff={propSetTimerOff} propSetPlayExercise={propSetPlayExercise} propSetStopExercise={propSetStopExercise} />}
+            
           </div>
 
         </div>
 
-       { playExercise && <ExerciseSound sound={sound} timerOn={timerOn} />}
+       
 
       </section>
      

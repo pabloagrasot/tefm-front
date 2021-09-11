@@ -1,7 +1,11 @@
 export interface PropsSound{
-    sound:string
-    timerOn: boolean
-  }
+  sound:string
+  timerOn: boolean
+  propSetTimerOn: () =>void
+  propSetTimerOff: () =>void
+  propSetPlayExercise: () =>void 
+  propSetStopExercise: () => void
+}
 
   export interface PropsGif{
     gif:string

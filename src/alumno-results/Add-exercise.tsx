@@ -63,6 +63,7 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, getAlumno}) => {
                 <option className="seconds__option">Ejercicio</option>
                 <option value="Correr">Correr</option>
                 <option value="Montar en Bici">Montar en Bici</option>
+                <option value="Correr en Cinta">Correr en Cinta</option>
               </select>
               <div className='input__error'>{formik.touched.exName && formik.errors.exName ? formik.errors.exName: ''}</div>
               { <FaIcons.FaArrowRight onClick={() => setNext(2)} className='next-add-exercise'/>}
@@ -110,6 +111,9 @@ export const AddExercise: FC<PropsNewEx> = ({showNewExercise, getAlumno}) => {
             </div>}
            
          </form>
+      
+
+
       
     </section> 
   )

@@ -1,28 +1,39 @@
-
-import React, { FC, useEffect, useState} from 'react'
+import React, { FC, useEffect, useState, useRef} from 'react'
 import {PropsSound} from './domain/props'
 
 
-export const ExerciseSound: FC<PropsSound> = ({sound, timerOn}) => {
+export const ExerciseSound: FC<PropsSound> = ({sound, timerOn, propSetTimerOn, propSetTimerOff, propSetPlayExercise, propSetStopExercise}) => {
 
-  const [audio] = useState( new Audio(sound) )
+  const [audio] = useState( new Audio(sound))
+  const ref = useRef(audio)
+
+  const [audioPlay, setAudioPlay] = useState(false)
 
   useEffect(() => {
-    audio.loop = true
-    audio.controls = true
-    audio.preload = 'none'
-    if (timerOn === true){
-      audio.play()
-    } else if ( timerOn === false){
-      audio.pause()
+    if(audioPlay){
+      ref.current.play()
+      propSetTimerOn()
+      propSetPlayExercise()
+      
+     } else{
+      ref.current.pause()
+      propSetTimerOff()
+      propSetStopExercise()
+     }
+      
+  }, [audioPlay, timerOn])
+
+
+  useEffect(() => {
+    if ( timerOn === false){
+      setAudioPlay(false)
     }
-    
-  }, [timerOn, audio])
-  
+  }, [timerOn])
+
   return (
     <>
+    { audioPlay === false && <button onClick={() => setAudioPlay(!audioPlay)} className={"secundary-button"}>Empezar</button> }
+    { audioPlay === true && <button onClick={() => setAudioPlay(!audioPlay)} className={"secundary-button"}>Pausar</button> }
     </>
   )
 }
-
-

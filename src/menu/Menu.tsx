@@ -36,14 +36,14 @@ export const Menu: FC = () => {
 
 
           <li className='nav-link'>
-            <Link to='/alumnos/'>
+            <Link onClick={showMlogOptions} to='/alumnos/'>
               <FaIcons.FaUserFriends/>
               <span className='nav-link__title'>Mis alumnos</span>
             </Link>
           </li>
 
           <li className='nav-link' onClick={logOut}>
-            <Link to='#'>
+            <Link onClick={showMlogOptions} to='#'>
               <Githubicons.GoSignOut/>
               <span className='nav-link__title'>Cerrar sesión</span>
             </Link>
