@@ -18,12 +18,9 @@ import { ProgressBar } from './ProgressBar'
 export const Ejercicios: FC = () => {
 
   const [timerOn, setTimerOn] = useState(false)
-  const [playExercise, setPlayExercise] = useState(false)
-  const stopExercise = () => setTimerOn(false)
   const propSetTimerOn = () => setTimerOn(true)
   const propSetTimerOff = () => setTimerOn(false)
-  const propSetPlayExercise = () => setPlayExercise(true)
-  const propSetStopExercise = () => setPlayExercise(false)
+
 
   const [seconds, setSeconds] = useState(30);
   const [watch, setWatch] = useState(0);
@@ -73,7 +70,6 @@ export const Ejercicios: FC = () => {
     if (timerOn){
         setGif(exercise)
         setPointer(false)
-        console.log(playExercise)
     }
  
   }, [timerOn, watch, seconds, exercise])
@@ -86,7 +82,7 @@ export const Ejercicios: FC = () => {
         <div>
           <ExerciseGif gif={gif}/>
 
-          <ProgressBar secondsSelected={seconds} watch={watch} timerOn={timerOn} stopExercise={stopExercise} />
+          <ProgressBar secondsSelected={seconds} watch={watch} timerOn={timerOn} propSetTimerOff={propSetTimerOff} />
 
 
           <div className="exercise__configuration">
@@ -130,7 +126,7 @@ export const Ejercicios: FC = () => {
             </select>
 
           
-            { exercise && <ExerciseSound sound={sound} timerOn={timerOn} propSetTimerOn={propSetTimerOn} propSetTimerOff={propSetTimerOff} propSetPlayExercise={propSetPlayExercise} propSetStopExercise={propSetStopExercise} />}
+            { exercise && <ExerciseSound sound={sound} timerOn={timerOn} propSetTimerOn={propSetTimerOn} propSetTimerOff={propSetTimerOff} />}
             
           </div>
 

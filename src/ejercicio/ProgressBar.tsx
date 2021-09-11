@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, lazy, Suspense} from 'react'
 import {PropsProgressBar} from './domain/props'
 
 
-export const ProgressBar: FC<PropsProgressBar> = ({secondsSelected, watch, timerOn, stopExercise}) =>{ 
+export const ProgressBar: FC<PropsProgressBar> = ({secondsSelected, watch, timerOn, propSetTimerOff}) =>{ 
 
 const [seconds, setSeconds] = useState(secondsSelected)
 
@@ -31,10 +31,10 @@ const End = lazy (
       
     }else if ( seconds === 0){
       clearInterval(interval)
-      stopExercise()
+      propSetTimerOff()
     }
     return () => clearInterval(interval)
-  }, [watch, timerOn, stopExercise, percentage, seconds] )
+  }, [watch, timerOn, propSetTimerOff, percentage, seconds] )
 
   return (
     <>

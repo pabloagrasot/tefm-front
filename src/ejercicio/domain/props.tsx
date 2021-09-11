@@ -3,8 +3,6 @@ export interface PropsSound{
   timerOn: boolean
   propSetTimerOn: () =>void
   propSetTimerOff: () =>void
-  propSetPlayExercise: () =>void 
-  propSetStopExercise: () => void
 }
 
   export interface PropsGif{
@@ -15,5 +13,5 @@ export interface PropsSound{
     secondsSelected: number
     watch:number
     timerOn: boolean
-    stopExercise: () =>void 
+    propSetTimerOff: () =>void 
   }
