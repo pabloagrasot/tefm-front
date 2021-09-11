@@ -21,7 +21,7 @@ export const ExerciseSound: FC<PropsSound> = ({sound, timerOn, propSetTimerOn, p
       propSetStopExercise()
      }
       
-  }, [audioPlay, timerOn])
+  }, [audioPlay, timerOn, propSetTimerOn, propSetTimerOff, propSetPlayExercise, propSetStopExercise])
 
 
   useEffect(() => {

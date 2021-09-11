@@ -73,6 +73,7 @@ export const Ejercicios: FC = () => {
     if (timerOn){
         setGif(exercise)
         setPointer(false)
+        console.log(playExercise)
     }
  
   }, [timerOn, watch, seconds, exercise])
