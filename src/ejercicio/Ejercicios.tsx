@@ -26,7 +26,8 @@ export const Ejercicios: FC = () => {
   const [watch, setWatch] = useState(0);
 
   const [pointer, setPointer] = useState(true)
-  const [gif, setGif] = useState(deporte)
+  const [gif, setGif] = useState('')
+  const [exercisePng , setExercisePng] = useState (deporte )
   const [exercise , setExercise] = useState ('')
   const [sound, setSound] = useState ('')
 
@@ -51,13 +52,15 @@ export const Ejercicios: FC = () => {
   const selectExercise = (e: ChangeEvent<any>) => {
     const exerciseSelected = e.target.value
     if(exerciseSelected === "run"){
+      setExercisePng(correrPng)
       setExercise(correr)
       setGif(correrPng)
     } if(exerciseSelected === "bike") {
+      setExercisePng(biciPng)
       setExercise(bici)
       setGif(biciPng)
-      
     } if (exerciseSelected === "treadmill"){
+      setExercisePng(cintaPng)
       setExercise(cinta)
       setGif(cintaPng)
     }
@@ -70,6 +73,8 @@ export const Ejercicios: FC = () => {
     if (timerOn){
         setGif(exercise)
         setPointer(false)
+    } else{
+      setGif(exercisePng)
     }
  
   }, [timerOn, watch, seconds, exercise])
