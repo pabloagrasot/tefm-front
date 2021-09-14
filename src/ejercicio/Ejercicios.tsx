@@ -77,7 +77,7 @@ export const Ejercicios: FC = () => {
       setGif(exercisePng)
     }
  
-  }, [timerOn, watch, seconds, exercise])
+  }, [timerOn, watch, seconds, exercise, exercisePng])
 
     return (
     <>
